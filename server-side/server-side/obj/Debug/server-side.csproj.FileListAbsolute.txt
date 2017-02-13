@@ -162,3 +162,5 @@ C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\obj\Debug\server-side.dll
+C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\service.dll
+C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\service.pdb

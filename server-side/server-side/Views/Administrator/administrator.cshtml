@@ -4,5 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>administrator</h2>
+<div class="container">
+
+    @{ 
+        foreach (service.Models.Books books in service.Models.Books.getBookList())
+        {
+            <h1>@books._ISBN</h1>
+            <a>@books._pages</a>
+            <a>@books._publicationInfo</a>
+            <a>@books._publicationYear</a>
+
+            <a>@books._title</a>
+        }
+
+
+
+    }
+
+
+
+
+</div>
+
+
 
