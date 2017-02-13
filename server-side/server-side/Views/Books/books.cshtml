@@ -1,26 +1,41 @@
-﻿
+﻿<link href="~/content/index.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = "books";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>books</h2>
 
 
 
     <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Panel heading</div>
-    <div class="panel-body">
-        <p># hejsan             jadå</p>
-    </div>
+    <div id="panelHeading" class="panel-heading">Books</div>
     <!-- Table -->
     <table class="table">
-      @*@foreach (var obj in Model)
-      {
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Publication year</th>
+                <th>ISBN</th>
+            </tr>
+        </thead>
 
-            @obj.name
-        
-      }*@
+
+        <tbody>
+            @foreach (service.Models.Books books in service.Models.Books.getBookList())
+            {
+                <tr>
+                    <td>@books._title</td>
+                    <td>@books._publicationInfo</td>
+                    <td>@books._ISBN</td>
+                    <td>@books._publicationYear</td>
+                    <td>@books._publicationYear</td>
+                </tr>
+            }
+        </tbody>
+
     </table>
 </div>

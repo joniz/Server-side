@@ -164,3 +164,5 @@ C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\obj\Debug\server-side.dll
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\service.dll
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\service.pdb
+C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\service.dll
+C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\service.pdb
