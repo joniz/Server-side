@@ -4,14 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>administrator</h2>
+
 
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Administrators</div>
-    @*<div class="panel-body">
-        <p># hejsan </p>
-    </div>*@
+   
     <!-- Table -->
     <table class="table">
 
@@ -19,23 +17,23 @@
         <thead>
             <tr>
                
-                <th>F</th>
-                <th>5</th>
-                <th>4</th>
+                <th>Admin-namn</th>
+                <th>Admin-ID</th>
+                
             </tr>
         </thead>
 
 
 
         <tbody>
-            @foreach (service.Models.Books books in service.Models.Books.getBookList())
+            @foreach (service.Models.Administrator admin in service.Models.Administrator.getAdministratorList())
             {
 
 
                 <tr>
-                    <td>@books._title</td>
-                    <td>@books._publicationInfo</td>
-                    <td>@books._ISBN</td>
+                    <td>@admin._admUserName</td>
+                    <td>@admin._admId</td>
+                    
 
                 </tr>
             }
