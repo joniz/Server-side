@@ -11,7 +11,6 @@ C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\rosly
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\roslyn\vbc.exe
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\roslyn\VBCSCompiler.exe
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\server-side.dll.config
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\server-side.dll
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\server-side.pdb
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\Antlr3.Runtime.dll
@@ -166,3 +165,4 @@ C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\servi
 C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\service.pdb
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\service.dll
 C:\Users\linuswarren\Downloads\GitHub\ToTheServer\Server-side\server-side\server-side\bin\service.pdb
+C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\server-side.dll.config
