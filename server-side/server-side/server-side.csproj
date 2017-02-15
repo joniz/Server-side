@@ -246,16 +246,15 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Administrator\administrator.cshtml" />
     <Content Include="Views\Authors\authors.cshtml" />
     <Content Include="Views\Books\books.cshtml" />
-    <Content Include="Views\Home\home.cshtml" />
     <Content Include="Views\LogIn\logIn.cshtml" />
+    <Content Include="Views\Books\bookDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
