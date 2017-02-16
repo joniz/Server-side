@@ -11,7 +11,7 @@
     <div class="panel-heading">Författare</div>
     
     <!-- Table -->
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
 
@@ -29,7 +29,7 @@
             {
 
 
-                <tr>
+                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author._aId})'">
                     <td>@author._firstName</td>
                     <td>@author._lastName</td>
                     <td>@author._birthYear</td>
