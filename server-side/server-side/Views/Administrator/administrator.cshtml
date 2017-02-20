@@ -7,10 +7,10 @@
 
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Administrators</div>
+    <div class="panel-heading" id="panelHeading">Administrators</div>
    
     <!-- Table -->
-    <table class="table">
+    <table class="table table-hover">
 
 
         <thead>
@@ -29,7 +29,7 @@
             {
 
 
-                <tr>
+                <tr  onclick="document.location = '@Url.Action("administratorDetails", "Administrator", new {admId = @admin._admId})'">
                     <td>@admin._admUserName</td>
                     <td>@admin._admId</td>
                     
