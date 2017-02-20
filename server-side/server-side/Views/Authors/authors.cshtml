@@ -20,7 +20,7 @@
                 
              </tr>
         </thead>
-
+        
 
 
         <tbody>
@@ -28,7 +28,11 @@
             {
 
 
+<<<<<<< HEAD
+                <tr class="clickable-row" onclick="document.location = '@Url.Action("authorDetails", "Author", new {isbn = @author._aId})'">
+=======
                 <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author._aId})'">
+>>>>>>> 9e9e1c671313ae6e931ebeb624d39ba071e20767
                     <td>@author._firstName</td>
                     <td>@author._lastName</td>
                     <td>@author._birthYear</td>

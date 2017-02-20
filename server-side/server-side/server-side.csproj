@@ -257,7 +257,10 @@
     <Content Include="Views\LogIn\logIn.cshtml" />
     <Content Include="Views\Books\bookDetails.cshtml" />
     <Content Include="Views\Authors\authorDetails.cshtml" />
+
+
     <Content Include="Views\Administrator\administratorDetails.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
