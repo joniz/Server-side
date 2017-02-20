@@ -13,5 +13,12 @@ namespace server_side.Controllers
         {
             return View("Administrator");
         }
+        public ActionResult administratorDetails(int admId)
+        {
+            ViewBag.id = admId;
+            return View("administratorDetails");
+            
+
+        }
     }
 }

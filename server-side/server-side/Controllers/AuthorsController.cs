@@ -14,5 +14,12 @@ namespace server_side.Controllers
 
             return View("Authors");
         }
+        public ActionResult authorDetails(int authorId)
+        {
+            ViewBag.aId = authorId;
+            return View("authorDetails");
+
+
+        }
     }
 }
