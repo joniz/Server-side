@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Author Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@foreach (service.Models.Author author in service.Models.Author.getAuthorList())
+{
+    if (author._aId == @ViewBag._aId)
+    {
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@author._firstName</div>
+                <div class="panel-body">
+
+                    <small>Last name: @author._lastName</small>
+                    <br />
+                    <small>Year of birth: @author._birthYear</small>
+                    <small>Author ID: @author._aId</small>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+
+}
