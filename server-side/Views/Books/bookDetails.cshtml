@@ -1,0 +1,29 @@
+﻿@{ 
+    ViewBag.Title = "bookDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@foreach (service.Models.Books books in service.Models.Books.getBookList())
+{
+    if (books._ISBN == @ViewBag.isbn)
+    {
+        
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">@books._title</div>
+                    <div class="panel-body">
+
+                        <small>Year: @books._publicationYear</small>
+                        <br />
+                        <small>ISBN: @books._ISBN</small>
+                    </div>
+                </div>
+            </div>
+       
+
+    }
+
+
+}

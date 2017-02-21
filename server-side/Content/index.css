@@ -1,0 +1,42 @@
+﻿body {
+   
+    
+}
+
+.jumbotron{
+    
+    padding-top: 50px;
+    border-radius: 4px;
+    height: 200px;
+    text-align: center;
+    font-size: 100px;
+    background-color: goldenrod;
+    font-family: 'Nunito', sans-serif;
+   
+
+}
+#panelHeading{
+
+
+    background-color: #a7a3a3;
+               
+}
+#searchButton{
+
+
+    height: 46px;
+    background-color: #a7a3a3;
+
+}
+.logInContainer{
+
+    /*background-color: #4cff00;*/
+    height: 10%;
+    width: 20%;
+    margin-left: 35%;
+}
+.clickable-row{
+    
+    
+
+}
