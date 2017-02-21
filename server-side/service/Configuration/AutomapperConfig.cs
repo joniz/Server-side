@@ -14,10 +14,10 @@ namespace service.Configuration
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile(new ToDepartmentProfile());
-                cfg.AddProfile(new FromDepartmentProfile());
-                cfg.AddProfile(new ToEmployeeProfile());
-                cfg.AddProfile(new FromEmployeeProfile());
+                //cfg.AddProfile(new ToDepartmentProfile());
+                //cfg.AddProfile(new FromDepartmentProfile());
+                //cfg.AddProfile(new ToEmployeeProfile());
+                //cfg.AddProfile(new FromEmployeeProfile());
             });
         }
     }

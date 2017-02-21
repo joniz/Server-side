@@ -250,3 +250,5 @@ C:\Users\Yoyo\Documents\GitHub\Server-side\server-side\server-side\bin\Microsoft
 C:\Users\Yoyo\Documents\GitHub\Server-side\server-side\server-side\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Yoyo\Documents\GitHub\Server-side\server-side\server-side\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Yoyo\Documents\GitHub\Server-side\server-side\server-side\obj\Debug\server-side.dll
+C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\AutoMapper.dll
+C:\Users\Jonathan\Documents\GitHub\Server-side\server-side\server-side\bin\AutoMapper.xml
