@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "administratorDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (service.Models.Administrator admin in service.Models.Administrator.getAdministratorList())
+{
+    if (admin._admId == @ViewBag.id)
+    {
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@admin._admUserName</div>
+                <div class="panel-body">
+
+                    <small>Birth year: @admin._admId</small>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+
+}

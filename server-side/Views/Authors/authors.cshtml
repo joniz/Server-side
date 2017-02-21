@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "authors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/index.css" rel="stylesheet" />
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" id="panelHeading">Författare</div>
+    
+    <!-- Table -->
+    <table  class="table table-hover">
+        <thead>
+            <tr>
+
+                <th>Förnamn</th>
+                <th>Efternamn</th>
+                <th>Födelseår</th>
+                
+             </tr>
+        </thead>
+
+
+
+        <tbody>
+            @foreach (service.Models.Author author in service.Models.Author.getAuthorList())
+            {
+
+
+                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author._aId})'">
+                    <td>@author._firstName</td>
+                    <td>@author._lastName</td>
+                    <td>@author._birthYear</td>
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
