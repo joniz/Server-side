@@ -223,6 +223,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\custom.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -254,10 +257,10 @@
     <Content Include="Views\LogIn\logIn.cshtml" />
     <Content Include="Views\Books\bookDetails.cshtml" />
     <Content Include="Views\Authors\authorDetails.cshtml" />
-<<<<<<< HEAD
-=======
+
+
     <Content Include="Views\Administrator\administratorDetails.cshtml" />
->>>>>>> 9e9e1c671313ae6e931ebeb624d39ba071e20767
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
