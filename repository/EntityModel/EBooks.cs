@@ -7,50 +7,51 @@ using System.Data.Entity;
 
 namespace repository.EntityModel
 {
-    public class EAuthor
+    public class EBooks
     {
-        public List<AUTHOR> List() {
+        public List<BOOK> List()
+        {
 
             using (var db = new swagbaseEntities())
             {
 
-                return db.AUTHORs.ToList();
+                return db.BOOKs.ToList();
             }
         }
-        public AUTHOR Read(int aID)
+        public BOOK Read(int isbn)
         {
             using (var db = new swagbaseEntities())
             {
-                return db.AUTHORs.Find(aID);
+                return db.BOOKs.Find(isbn);
             }
 
         }
-        public void Add(AUTHOR authorObj)
+        public void Add(BOOK bookObj)
         {
             using (var db = new swagbaseEntities())
             {
-                db.AUTHORs.Add(authorObj);
+                db.BOOKs.Add(bookObj);
                 db.SaveChanges();
             }
-        } 
-        public void Update(AUTHOR authorObj)
+        }
+        public void Update(BOOK bookObj)
         {
             using (var db = new swagbaseEntities())
             {
 
-                db.AUTHORs.Attach(authorObj);
-                db.Entry(authorObj).State = EntityState.Modified;
+                db.BOOKs.Attach(bookObj);
+                db.Entry(bookObj).State = EntityState.Modified;
                 db.SaveChanges();
             }
 
         }
-        public void Delete(AUTHOR authorObj)
+        public void Delete(BOOK bookObj)
         {
             using (var db = new swagbaseEntities())
             {
 
-                AUTHOR athID = db.AUTHORs.Find(authorObj.Aid);
-                db.AUTHORs.Remove(athID);
+                BOOK bISBN = db.BOOKs.Find(bookObj.ISBN);
+                db.BOOKs.Remove(bISBN);
                 db.SaveChanges();
             }
         }
