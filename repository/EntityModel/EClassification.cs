@@ -7,50 +7,51 @@ using System.Data.Entity;
 
 namespace repository.EntityModel
 {
-    public class EAuthor
+    public class EClassification
     {
-        public List<AUTHOR> List() {
+        public List<CLASSIFICATION> List()
+        {
 
             using (var db = new swagbaseEntities())
             {
 
-                return db.AUTHORs.ToList();
+                return db.CLASSIFICATIONs.ToList();
             }
         }
-        public AUTHOR Read(int aID)
+        public CLASSIFICATION Read(int signId)
         {
             using (var db = new swagbaseEntities())
             {
-                return db.AUTHORs.Find(aID);
+                return db.CLASSIFICATIONs.Find(signId);
             }
 
         }
-        public void Add(AUTHOR authorObj)
+        public void Add(CLASSIFICATION classiObj)
         {
             using (var db = new swagbaseEntities())
             {
-                db.AUTHORs.Add(authorObj);
+                db.CLASSIFICATIONs.Add(classiObj);
                 db.SaveChanges();
             }
-        } 
-        public void Update(AUTHOR authorObj)
+        }
+        public void Update(CLASSIFICATION classiObj)
         {
             using (var db = new swagbaseEntities())
             {
 
-                db.AUTHORs.Attach(authorObj);
-                db.Entry(authorObj).State = EntityState.Modified;
+                db.CLASSIFICATIONs.Attach(classiObj);
+                db.Entry(classiObj).State = EntityState.Modified;
                 db.SaveChanges();
             }
 
         }
-        public void Delete(AUTHOR authorObj)
+        public void Delete(CLASSIFICATION classiObj)
         {
             using (var db = new swagbaseEntities())
             {
 
-                AUTHOR athID = db.AUTHORs.Find(authorObj.Aid);
-                db.AUTHORs.Remove(athID);
+                CLASSIFICATION csignID = db.CLASSIFICATIONs.Find(classiObj.SignId);
+                db.CLASSIFICATIONs.Remove(csignID);
                 db.SaveChanges();
             }
         }
