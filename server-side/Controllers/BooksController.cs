@@ -13,7 +13,7 @@ namespace server_side.Controllers
         {
             return View("books");
         }
-        public ActionResult bookDetails(int isbn)
+        public ActionResult bookDetails(string isbn)
         {
             ViewBag.ISBN = isbn;
             return View("bookDetails");

@@ -13,7 +13,19 @@ namespace service.Configuration
         public ToAuthorProfile()
         {
             
-            CreateMap<Models.Author, AUTHOR>();
+            CreateMap<AUTHOR, Models.Author>();
         }
+    }
+    public class FromAuthorProfile : Profile
+    {
+        public FromAuthorProfile()
+        {
+            CreateMap<Models.Author, AUTHOR>();
+
+
+
+        }
+
+
     }
 }

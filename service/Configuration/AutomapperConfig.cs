@@ -15,8 +15,11 @@ namespace service.Configuration
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile(new ToAuthorProfile());
+                cfg.AddProfile(new FromAuthorProfile());
                 cfg.AddProfile(new ToBookProfile());
+                cfg.AddProfile(new FromBookProfile());
                 cfg.AddProfile(new ToClassificationProfile());
+                cfg.AddProfile(new FromClassificationProfile());
                 //cfg.AddProfile(new FromEmployeeProfile());
             });
         }

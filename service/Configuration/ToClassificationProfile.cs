@@ -13,8 +13,18 @@ namespace service.Configuration
         public ToClassificationProfile()
         {
 
-            CreateMap< Models.Classification, CLASSIFICATION>();
+            CreateMap<CLASSIFICATION, Models.Classification>();
         }
     }
+    class FromClassificationProfile : Profile
+    {
+        public FromClassificationProfile()
+        {
+            CreateMap<Models.Classification, CLASSIFICATION>();
 
+
+        }
+
+
+    }
 }

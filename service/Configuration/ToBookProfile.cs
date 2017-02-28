@@ -8,12 +8,23 @@ using repository;
 
 namespace service.Configuration
 {
-    class ToBookProfile : Profile
+    public class ToBookProfile : Profile
     {
         public ToBookProfile(){
 
-        CreateMap<Models.Books, BOOK>();
+        CreateMap<BOOK,Models.Books >();
             
         }
+       
+    }
+    public class FromBookProfile : Profile
+    {
+        public FromBookProfile()
+        {
+            CreateMap<Models.Books, BOOK>();
+        }
+
+
+
     }
 }
