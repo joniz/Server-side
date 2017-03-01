@@ -36,16 +36,19 @@
             </div>
 
             <div class="row">
+                @using (Html.BeginForm("books", "Books", FormMethod.Get))
+                {
                 <form class="navbar-nav" role="search">
 
                     <div class="col-lg-12 input-group add-on">
-                        <input class="form-control input-lg" placeholder="Search" name="srch-term" id="srch-term" type="text">
+                        <input class="form-control input-lg" placeholder="Search" name="srch-term" id="search" type="text">
                         <div class="input-group-btn">
-                            <button id="searchButton" class="btn btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <button href='@Url.Action("authors", "Authors")' id="searchButton" class="btn btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
 
                 </form>
+                }
             </div>
 
 

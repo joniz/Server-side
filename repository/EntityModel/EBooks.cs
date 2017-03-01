@@ -12,7 +12,7 @@ namespace repository.EntityModel
         public List<BOOK> List()
         {
 
-            using (var db = new swagbaseEntities1())
+            using (var db = new dbtestEntities())
             {
 
                 return db.BOOKs.ToList();
@@ -20,7 +20,7 @@ namespace repository.EntityModel
         }
         public BOOK Read(string isbn)
         {
-            using (var db = new swagbaseEntities1())
+            using (var db = new dbtestEntities())
             {
                 return db.BOOKs.Find(isbn);
             }
@@ -28,7 +28,7 @@ namespace repository.EntityModel
         }
         public void Add(BOOK bookObj)
         {
-            using (var db = new swagbaseEntities1())
+            using (var db = new dbtestEntities())
             {
                 db.BOOKs.Add(bookObj);
                 db.SaveChanges();
@@ -36,7 +36,7 @@ namespace repository.EntityModel
         }
         public void Update(BOOK bookObj)
         {
-            using (var db = new swagbaseEntities1())
+            using (var db = new dbtestEntities())
             {
 
                 db.BOOKs.Attach(bookObj);
@@ -47,7 +47,7 @@ namespace repository.EntityModel
         }
         public void Delete(BOOK bookObj)
         {
-            using (var db = new swagbaseEntities1())
+            using (var db = new dbtestEntities())
             {
 
                 BOOK bISBN = db.BOOKs.Find(bookObj.ISBN);
