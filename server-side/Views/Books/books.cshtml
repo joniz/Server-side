@@ -26,7 +26,7 @@
        
         <tbody>
             
-                @foreach (service.Models.Books books in service.Models.Books.getBookList())
+                @foreach (service.Models.Books books in service.Models.Books.getBookList(ViewBag.Title))
                 {
 
                     <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books._ISBN})'">

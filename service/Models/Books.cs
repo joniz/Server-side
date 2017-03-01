@@ -25,9 +25,9 @@ namespace service.Models
         {
             return Mapper.Map<Books>(e_ISBN.Read(ISBN));
         }
-        static public List<Books> getBookList()
+        static public List<Books> getBookList(string search)
         {
-            return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List());
+            return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List(search));
         }
 
         

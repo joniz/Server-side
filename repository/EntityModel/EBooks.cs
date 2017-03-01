@@ -9,13 +9,13 @@ namespace repository.EntityModel
 {
     public class EBooks
     {
-        public List<BOOK> List()
+        public List<BOOK> List(string search)
         {
 
             using (var db = new swagbaseEntities1())
             {
 
-                return db.BOOKs.ToList();
+                return db.BOOKs.Where(x => x.Title == search).ToList();
             }
         }
         public BOOK Read(string isbn)
