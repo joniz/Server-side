@@ -15,7 +15,7 @@ namespace repository.EntityModel
             using (var db = new dbtestEntities())
             {
 
-                return db.BOOKs.Where(x => x.Title == search).ToList();
+                return db.BOOKs.Where(x => x.Title.StartsWith(search) || search == null).OrderBy(x => x.Title).ToList();
             }
         }
         public BOOK Read(string isbn)

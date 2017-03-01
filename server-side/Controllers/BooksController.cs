@@ -14,13 +14,12 @@ namespace server_side.Controllers
         // GET: Books
         public ActionResult books(string search, int? page)
         {
-            ViewBag.Title = search;
-            return View(Books.getBookList(search)/*.ToPagedList(page ?? 1, 15)*/);
+            return View(Books.getBookList(search).ToPagedList(page ?? 1, 11));
         }
         public ActionResult bookDetails(string isbn)
         {
             ViewBag.ISBN = isbn;
-            return View("bookDetails");
+            return View(Books.getBook(isbn));
 
 
         } 

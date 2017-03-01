@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<service.Models.Books>
 
 @{
     ViewBag.Title = "books";
@@ -26,11 +28,11 @@
        
         <tbody>
             
-                @foreach (service.Models.Books books in service.Models.Books.getBookList(ViewBag.Title))
+                @foreach (var books in Model)
                 {
 
                     <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books._ISBN})'">
-                        <td>@books._title</td>
+                        <td>@books._title</td>      
                         <td>@books._publicationInfo</td>
                         <td>@books._pages</td>
                         <td>@books._publicationYear</td>
