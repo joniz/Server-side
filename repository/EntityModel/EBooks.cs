@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-
+using PagedList;
+using PagedList.Mvc;
 namespace repository.EntityModel
 {
     public class EBooks
@@ -17,6 +18,15 @@ namespace repository.EntityModel
 
                 return db.BOOKs.Where(x => x.Title.StartsWith(search) || search == null).OrderBy(x => x.Title).ToList();
             }
+        }
+        public List<AUTHOR> AuthorList(string isbn)
+        {
+            using (var db = new dbtestEntities())
+            {
+                return db.BOOKs.Find(isbn).AUTHORs.ToList();
+            }
+
+
         }
         public BOOK Read(string isbn)
         {

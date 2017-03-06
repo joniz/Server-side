@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<service.Models.Author>
 @{
     ViewBag.Title = "authors";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,7 +26,7 @@
 
 
         <tbody>
-            @foreach (service.Models.Author author in service.Models.Author.getAuthorList())
+            @foreach (var author in Model)
             {
 
 
@@ -39,3 +41,4 @@
 
     </table>
 </div>
+@Html.PagedListPager(Model, page => Url.Action("authors", new { page, Search = Request.QueryString["Search"] }))

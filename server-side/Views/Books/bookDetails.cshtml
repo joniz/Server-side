@@ -1,5 +1,5 @@
 ﻿
-@model service.Models.Books
+@model service.Models.viewModel
 
 @{ 
     ViewBag.Title = "bookDetails";
@@ -10,14 +10,20 @@
         
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@Model._title</div>
+                <div class="panel-heading">@Model.book._title</div>
                 <div class="panel-body">
 
-                    <small>Year: @Model._publicationYear</small>
+                    <small>Info: @Model.book._publicationInfo</small>
                     <br />
-                    <small>ISBN: @Model._ISBN</small>
+                    <small>ISBN: @Model.book._ISBN</small>
                     <br />
-                    <small>Pages: @Model._pages</small>
+                    <small>Pages: @Model.book._pages</small>
+                    <br />
+                    <small>Authors: </small>
+                    @foreach (var authors in Model.authorList)
+                    {
+                    <small>@authors._firstName, @authors._lastName</small>
+                    }
                 </div>
             </div>
         </div>

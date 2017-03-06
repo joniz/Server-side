@@ -29,7 +29,10 @@ namespace service.Models
         {
             return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List(search));
         }
-
+        static public List<Author> getBookAuthor(string isbn)
+        {
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.AuthorList(isbn));
+        }
         
     }
 }

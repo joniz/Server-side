@@ -1,29 +1,33 @@
-﻿
+﻿@model service.Models.viewModel
 @{
     ViewBag.Title = "authorDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (service.Models.Author author in service.Models.Author.getAuthorList())
-{
-    if (author._aId == @ViewBag.aId)
-    {
+
+    
 
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@author._firstName @author._lastName</div>
+                <div class="panel-heading">@Model.author._firstName @Model.author._lastName</div>
                 <div class="panel-body">
 
-                    <small>Birth year: @author._birthYear</small>
+                    <small>Birth year: @Model.author._birthYear</small>
                     <br />
-                    <small>unique ID: @author._aId</small>
+                    <small>unique ID: @Model.author._aId</small>
+                    <br />
+                    <small>Books:</small>
+                    @foreach (var books in Model.bookList)
+                    {
+                        <small>@books._title</small>
+                    }
                 </div>
             </div>
         </div>
 
 
-    }
+    
 
 
-}
+
 

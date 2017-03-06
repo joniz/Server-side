@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using service.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace server_side.Controllers
 {
     public class AuthorsController : Controller
     {
         // GET: Authors
-        public ActionResult authors()
+        public ActionResult authors(string search, int? page)
         {
-            return View("Authors");
+            return View(Author.getAuthorList(search).ToPagedList(page ?? 1, 15));
         }
         public ActionResult authorDetails(int authorId)
         {
-            ViewBag.aId = authorId;
-            return View("authorDetails");
+            viewModel _viewModel = new viewModel();
+            _viewModel.bookList = Author.getBooksFromAuthor(authorId);
+            _viewModel.author = Author.getAuthor(authorId);
+
+            return View(_viewModel);
 
 
         }
