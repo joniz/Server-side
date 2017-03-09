@@ -16,14 +16,19 @@ namespace server_side.Controllers
         {
             return View(Books.getBookList(search).ToPagedList(page ?? 1, 15));
         }
+
         public ActionResult bookDetails(string isbn)
         {
-            viewModel _viewModel = new viewModel();
-            _viewModel.authorList = Books.getBookAuthor(isbn);
-            _viewModel.book = Books.getBook(isbn);
             
-           // _viewModel.book.
-            return View(_viewModel);
+
+                viewModel _viewModel = new viewModel();
+                _viewModel.authorList = Books.getBookAuthor(isbn);
+                _viewModel.book = Books.getBook(isbn);
+
+                // _viewModel.book.
+                return View(_viewModel);
+            
+            
         }
         public ActionResult createBook()
         {

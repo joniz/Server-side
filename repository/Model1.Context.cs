@@ -25,8 +25,8 @@ namespace repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AUTHOR> AUTHORs { get; set; }
-        public virtual DbSet<BOOK> BOOKs { get; set; }
-        public virtual DbSet<CLASSIFICATION> CLASSIFICATIONs { get; set; }
+        public DbSet<AUTHOR> AUTHORs { get; set; }
+        public DbSet<BOOK> BOOKs { get; set; }
+        public DbSet<CLASSIFICATION> CLASSIFICATIONs { get; set; }
     }
 }
