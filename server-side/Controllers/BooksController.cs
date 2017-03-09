@@ -21,9 +21,14 @@ namespace server_side.Controllers
             viewModel _viewModel = new viewModel();
             _viewModel.authorList = Books.getBookAuthor(isbn);
             _viewModel.book = Books.getBook(isbn);
+            
+           // _viewModel.book.
             return View(_viewModel);
-
-
+        }
+        public ActionResult createBook()
+        {
+            return View("createBook");
+            
         } 
 
 
