@@ -34,25 +34,7 @@
                     </ul>
                 </div>
             </div>
-            @using (Html.BeginForm((string)ViewContext.RouteData.Values["action"], (string)ViewContext.RouteData.Values["controller"], FormMethod.Get))
-            {
-            <div class="row">
-                
-                
-                <form class="navbar-nav" role="search">
-
-                    <div class="col-lg-12 input-group add-on">
-                        
-                        @Html.TextBox("Search", null, new { @class = "form-control input-lg", @placeholder = "Search", @type = "text" })
-                        <div class="input-group-btn">
-                            <button id="searchButton" class="btn btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-
-                </form>
-                
-            </div>
-            }
+            
 
 
 
