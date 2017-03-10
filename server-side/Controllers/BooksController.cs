@@ -29,6 +29,15 @@ namespace server_side.Controllers
         {
             return View("createBook");
             
+        }
+        public ActionResult editBook(string isbn)
+        {
+            
+            viewModel _viewModel = new viewModel();
+            _viewModel.authorList = 
+
+
+            return View("editBook");
         } 
 
 

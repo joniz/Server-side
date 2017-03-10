@@ -60,17 +60,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AUTHOR.cs">
-      <DependentUpon>swagbase.tt</DependentUpon>
+      <DependentUpon>lokalmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="BOOK.cs">
-      <DependentUpon>swagbase.tt</DependentUpon>
+      <DependentUpon>lokalmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="CLASSIFICATION.cs">
-      <DependentUpon>swagbase.tt</DependentUpon>
+      <DependentUpon>lokalmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\EAuthor.cs" />
     <Compile Include="EntityModel\EBooks.cs" />
     <Compile Include="EntityModel\EClassification.cs" />
+    <Compile Include="lokalmodel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalmodel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lokalmodel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lokalmodel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalmodel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +140,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="lokalmodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>lokalmodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="lokalmodel.edmx.diagram">
+      <DependentUpon>lokalmodel.edmx</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -146,6 +168,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
+    <Content Include="lokalmodel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lokalmodel.edmx</DependentUpon>
+      <LastGenOutput>lokalmodel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="lokalmodel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>lokalmodel.edmx</DependentUpon>
+      <LastGenOutput>lokalmodel.cs</LastGenOutput>
+    </Content>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -24,6 +24,10 @@
                     {
                     <small>@authors._firstName, @authors._lastName</small>
                     }
+                    <div class="col-md-12">
+                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("editBook", "Books", new {isbn = @Model.book._ISBN})'></a>
+                        
+                    </div>
                 </div>
             </div>
         </div>
