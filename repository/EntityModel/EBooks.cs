@@ -23,7 +23,7 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities())
             {
-                return db.BOOKs.Find(isbn).AUTHORs.ToList();
+                return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().AUTHORs.ToList();
             }
 
 
