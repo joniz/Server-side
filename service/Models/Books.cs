@@ -18,6 +18,8 @@ namespace service.Models
         public int _publicationYear { get; set; }
         public string _publicationInfo { get; set; }
         public int _pages { get; set; }
+        public List<Classification> _classificationList { get; set; }
+        public List<Author> _authorList { get; set; }
 
         static private EBooks e_ISBN = new EBooks();
 
@@ -25,9 +27,9 @@ namespace service.Models
         {
             return Mapper.Map<Books>(e_ISBN.Read(ISBN));
         }
-        static public List<Books> getBookList(string search)
+        static public List<Books> getBookList()
         {
-            return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List(search));
+            return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List());
         }
         static public List<Author> getBookAuthor(string isbn)
         {

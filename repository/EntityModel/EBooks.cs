@@ -10,15 +10,26 @@ namespace repository.EntityModel
 {
     public class EBooks
     {
-        public List<BOOK> List(string search)
+        public List<BOOK> List()
         {
 
             using (var db = new dbtestEntities())
             {
 
-                return db.BOOKs.Where(x => x.Title.StartsWith(search) || search == null).OrderBy(x => x.Title).ToList();
+                return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).OrderBy(x => x.Title).ToList();
             }
         }
+        public CLASSIFICATION getClassification(string isbn)
+        {
+            using (var db = new dbtestEntities())
+            {
+                return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().CLASSIFICATION;
+            }
+
+
+        }
+
+
         public List<AUTHOR> AuthorList(string isbn)
         {
             using (var db = new dbtestEntities())
@@ -32,7 +43,7 @@ namespace repository.EntityModel
         {
             using (var db = new dbtestEntities())
             {
-                return db.BOOKs.Find(isbn);
+                return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First();
             }
 
         }

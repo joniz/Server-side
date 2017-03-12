@@ -26,7 +26,7 @@ namespace service.Models
         }
         static public List<Author> getAuthorList(string search)
         {
-            return Mapper.Map<List<AUTHOR>, List<Author>>(e_aID.List(search));
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_aID.List());
         }
         static public List<Books> getBooksFromAuthor(int aId)
         {
