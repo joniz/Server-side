@@ -1,5 +1,5 @@
 ﻿
-@model service.Models.Books
+@model service.Models.Author
 
 @{
     ViewBag.Title = "createBook";
@@ -15,7 +15,7 @@
 <div class="form-group">
     <label for="sel1">Select author:</label>
     <select class="form-control" id="sel1">
-        @foreach (var authors in Model.AUTHORS)
+        @foreach ()
         {
             <option>@authors._firstName, @authors._lastName</option>
         }

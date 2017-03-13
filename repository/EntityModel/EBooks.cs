@@ -12,7 +12,7 @@ namespace repository.EntityModel
     {
         public List<AUTHOR> getAllAuthors()
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 return db.AUTHORs.OrderBy(x => x.LastName).ToList();
             }
@@ -20,7 +20,7 @@ namespace repository.EntityModel
         public List<BOOK> List()
         {
 
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).OrderBy(x => x.Title).ToList();
@@ -28,7 +28,7 @@ namespace repository.EntityModel
         }
         public CLASSIFICATION getClassification(string isbn)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().CLASSIFICATION;
             }
@@ -39,7 +39,7 @@ namespace repository.EntityModel
 
         public List<AUTHOR> AuthorList(string isbn)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().AUTHORs.ToList();
             }
@@ -48,7 +48,7 @@ namespace repository.EntityModel
         }
         public BOOK Read(string isbn)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First();
@@ -58,7 +58,7 @@ namespace repository.EntityModel
         }
         public void Add(BOOK bookObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 db.BOOKs.Add(bookObj);
                 db.SaveChanges();
@@ -66,7 +66,7 @@ namespace repository.EntityModel
         }
         public void Update(BOOK bookObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 db.BOOKs.Attach(bookObj);
@@ -77,7 +77,7 @@ namespace repository.EntityModel
         }
         public void Delete(BOOK bookObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 BOOK bISBN = db.BOOKs.Find(bookObj.ISBN);

@@ -52,7 +52,8 @@ namespace server_side.Controllers
         }
         public ActionResult createBook()
         {
-            return View(Books.getAllA());
+
+            return View(Books.getBookList().ToList());
             
         }
         public ActionResult editBook(string isbn)

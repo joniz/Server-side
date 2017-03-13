@@ -11,7 +11,7 @@ namespace repository.EntityModel
     {
         public List<AUTHOR> List() {
 
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 return db.AUTHORs.Include(x => x.BOOKs).ToList();
@@ -19,14 +19,14 @@ namespace repository.EntityModel
         }
         public List<BOOK> getBookList(int aId)
         {
-            using(var db = new dbtestEntitiesEntities())
+            using(var db = new dbtestEntities())
             {
                 return db.AUTHORs.Include(x => x.BOOKs).Where(x => x.Aid == aId).First().BOOKs.ToList();
             }
     }
         public AUTHOR Read(int aID)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 return db.AUTHORs.Find(aID);
             }
@@ -34,7 +34,7 @@ namespace repository.EntityModel
         }
         public void Add(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
                 using(var transaction = db.Database.BeginTransaction())
                 {
