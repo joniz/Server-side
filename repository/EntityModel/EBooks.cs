@@ -43,7 +43,9 @@ namespace repository.EntityModel
         {
             using (var db = new dbtestEntities())
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First();
+            
             }
 
         }

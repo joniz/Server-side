@@ -18,8 +18,8 @@ namespace service.Models
         public int _publicationYear { get; set; }
         public string _publicationInfo { get; set; }
         public int _pages { get; set; }
-        public List<Classification> _classificationList { get; set; }
-        public List<Author> _authorList { get; set; }
+        public Classification CLASSIFICATION { get; set; }
+        public List<Author> AUTHORS { get; set; }
 
         static private EBooks e_ISBN = new EBooks();
 
