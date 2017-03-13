@@ -12,7 +12,7 @@
 
     <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div id="panelHeading" class="panel-heading">@using (Html.BeginForm("books", "Books", FormMethod.Get))
+    <div id="panelHeading" class="panel-heading">@using (Html.BeginForm("bookSearch", "Books", FormMethod.Get))
             {
         <div class="row">
 
@@ -68,6 +68,6 @@
 </div>
 <div class="col-md-12">
     <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("createBook", "Books")'></a>
-    @Html.PagedListPager(Model, page => Url.Action("books", new { page, Search = Request.QueryString["Search"] }))
+    @Html.PagedListPager(Model, page => Url.Action("bookSearch", new { page, Search = Request.QueryString["Search"] }))
     
 </div>

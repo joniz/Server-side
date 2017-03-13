@@ -12,10 +12,30 @@ namespace server_side.Controllers
     public class BooksController : Controller
     {
         // GET: Books
-        public ActionResult books(string search, int? page)
+        public ActionResult books(int? page)
         {
-            return View(Books.getBookList(search).ToPagedList(page ?? 1, 15));
+            return View(Books.getBookList().ToPagedList(page ?? 1, 15));
+                
         }
+        public ActionResult bookSearch(string search, int? page)
+        {
+            List<Books> _bookList = new List<Books>();
+            if (search != null)
+            {
+                foreach (var book in Books.getBookList())
+                {
+                    if (book._title.Contains(search) || book._ISBN.Contains(search))
+                    {
+                        _bookList.Add(book);
+                    }
+                }
+                return View("books", _bookList.ToPagedList(page ?? 1, 15));
+            }
+            return View("books", Books.getBookList().ToPagedList(page ?? 1, 15));
+
+        }
+            
+        
 
         public ActionResult bookDetails(string isbn)
         {
@@ -37,11 +57,7 @@ namespace server_side.Controllers
         }
         public ActionResult editBook(string isbn)
         {
-            
-            
-
-
-            return View("editBook");
+            return View(Books.getBook(isbn));
         } 
 
 

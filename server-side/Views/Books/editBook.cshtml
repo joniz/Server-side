@@ -1,5 +1,36 @@
-﻿
+﻿@model service.Models.Books
 
 
 <h2>editBook</h2>
 
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Titel of book: @Model._title</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text">
+        
+    </div>
+    <div class="form-group">
+        <label>
+            Author(s):
+            @foreach (var author in Model.AUTHORS)
+            {
+                <small>[@author._lastName, @author._firstName]</small>
+            }
+        </label>
+            <label for="exampleInputPassword1"></label>
+        
+        <input type="text" class="form-control" id="exampleInputPassword1"   placeholder = "Enter text">
+    </div>
+    <div class="form-group">
+        <label for="exampleSelect1">Example select</label>
+        <select class="form-control" id="exampleSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

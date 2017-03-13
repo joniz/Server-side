@@ -9,19 +9,19 @@ namespace repository.EntityModel
 {
     public class EAuthor
     {
-        public List<AUTHOR> List(string search) {
+        public List<AUTHOR> List() {
 
-            using (var db = new swagbaseEntities())
+            using (var db = new dbtestEntities())
             {
 
-                return db.AUTHORs.Where(x => x.LastName.StartsWith(search) || search == null).OrderBy(x => x.LastName).ToList();
+                return db.AUTHORs.Include(x => x.BOOKs).ToList();
             }
         }
         public List<BOOK> getBookList(int aId)
         {
             using(var db = new swagbaseEntities())
             {
-                return db.AUTHORs.Find(aId).BOOKs.ToList();
+                return db.AUTHORs.Include(x => x.BOOKs).Where(x => x.Aid == aId).First().BOOKs.ToList();
             }
     }
         public AUTHOR Read(int aID)
@@ -36,8 +36,17 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities())
             {
-                db.AUTHORs.Add(authorObj);
-                db.SaveChanges();
+                using(var transaction = db.Database.BeginTransaction())
+                {
+                    authorObj.Aid = (db.AUTHORs.ToList().Max(x => x.Aid) + 1);
+                    db.AUTHORs.Add(authorObj);
+                    db.SaveChanges();
+                    transaction.Commit();
+                }
+
+
+
+                
             }
         } 
         public void Update(AUTHOR authorObj)
