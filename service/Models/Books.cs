@@ -35,6 +35,10 @@ namespace service.Models
         {
             return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.AuthorList(isbn));
         }
-        
+        static public List<Author> getAllA()
+        {
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.getAllAuthors());
+        }
+
     }
 }
