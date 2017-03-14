@@ -55,9 +55,9 @@ namespace server_side.Controllers
             return View("createBook");
             
         }
-        public ActionResult editBook(string isbn)
+        public ActionResult showEditView(string isbn)
         {
-            return View(Books.getBook(isbn));
+            return View("editBook",Books.getBook(isbn));
         } 
 
 
