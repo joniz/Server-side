@@ -14,6 +14,7 @@ namespace service.Models
         public Author author { get; set; }
         public Classification classifications { get; set; }
         public Administrator administrator {get; set; }
+        public List<Classification> classificationList { get; set; }
         
 
 

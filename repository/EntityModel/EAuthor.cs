@@ -51,7 +51,7 @@ namespace repository.EntityModel
         } 
         public void Update(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 db.AUTHORs.Attach(authorObj);
@@ -62,7 +62,7 @@ namespace repository.EntityModel
         }
         public void Delete(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntitiesEntities())
+            using (var db = new dbtestEntities())
             {
 
                 AUTHOR athID = db.AUTHORs.Find(authorObj.Aid);

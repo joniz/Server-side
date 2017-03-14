@@ -50,11 +50,37 @@ namespace server_side.Controllers
             
             
         }
-        public ActionResult createBook()
+        public ActionResult showCreateBook()
         {
-
-            return View(Author.getAuthorList().ToList());
+            viewModel _viewModel = new viewModel();
+            _viewModel.authorList = Author.getAuthorList();
+            _viewModel.classificationList = Classification.getClassificationList();
+            return View("createBook",_viewModel);
             
+        }
+        public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
+        {
+            Books _bookObj = new Books();
+            _bookObj._title = title;
+            _bookObj._publicationYear = publicationYear;
+            _bookObj._signId = signId;
+            _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+            _bookObj._ISBN = isbn;
+            _bookObj._pages = pages;
+            _bookObj._publicationInfo = publicationInfo;
+
+            List<Author> authorList = new List<Author>();
+            foreach (int id in aID)
+            {
+                authorList.Add(Author.getAuthor(id));
+            }
+            _bookObj.AUTHORS = authorList;
+
+            if (ModelState.IsValid)
+            {
+                Books.addBook(_bookObj);
+            }
+            return View("books", Books.getBookList().ToPagedList(1, 15));
         }
         public ActionResult showEditView(string isbn)
         {
