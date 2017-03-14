@@ -42,7 +42,7 @@ namespace service.Models
         }
         static public List<Author> getAllA()
         {
-            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.getAllAuthors());
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.getAllAuthors());
 
 
 

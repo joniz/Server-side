@@ -14,7 +14,7 @@ namespace server_side.Controllers
         // GET: Authors
         public ActionResult authors(string search, int? page)
         {
-            return View(Author.getAuthorList(search).ToPagedList(page ?? 1, 15));
+            return View(Author.getAuthorList().ToPagedList(page ?? 1, 15));
         }
         public ActionResult authorDetails(int authorId)
         {

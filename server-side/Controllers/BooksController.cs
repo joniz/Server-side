@@ -53,14 +53,16 @@ namespace server_side.Controllers
         public ActionResult createBook()
         {
 
-            return View(Books.getBookList().ToList());
+            return View(Author.getAuthorList().ToList());
             
         }
         public ActionResult showEditView(string isbn)
         {
             return View("editBook",Books.getBook(isbn));
-        } 
-
-
+        }
+        public ActionResult editBook(string ISBN)
+        {
+            return View();
+        }
     }
 }
