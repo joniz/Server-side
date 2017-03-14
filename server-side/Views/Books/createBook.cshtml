@@ -1,8 +1,48 @@
 ﻿
+@model service.Models.Author
+
 @{
     ViewBag.Title = "createBook";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>createBook</h2>
+<h2>Create Book</h2>
+
+<div class="form-group">
+    <label for="usr">Title:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+    <label for="sel1">Select author:</label>
+    <select class="form-control" id="sel1">
+        @foreach ()
+        {
+            <option>@authors._firstName, @authors._lastName</option>
+        }
+
+    </select>
+</div>
+<div class="form-group">
+    <label for="usr">Publication year:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+    <label for="usr">Sign Id:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+    <label for="usr">Isbn:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+    <label for="usr">Paged:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+    <label for="comment">Publication info</label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+<div class="col-md-12">
+    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right">Add</a>
+</div>
 

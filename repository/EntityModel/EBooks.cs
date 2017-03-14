@@ -10,6 +10,13 @@ namespace repository.EntityModel
 {
     public class EBooks
     {
+        public List<AUTHOR> getAllAuthors()
+        {
+            using (var db = new dbtestEntities())
+            {
+                return db.AUTHORs.OrderBy(x => x.LastName).ToList();
+            }
+        }
         public List<BOOK> List()
         {
 

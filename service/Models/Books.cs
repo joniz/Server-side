@@ -40,7 +40,13 @@ namespace service.Models
             e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
 
         }
-        
-        
+        static public List<Author> getAllA()
+        {
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.getAllAuthors());
+
+
+
+
+        }
     }
 }

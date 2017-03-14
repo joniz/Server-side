@@ -60,13 +60,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AUTHOR.cs">
-      <DependentUpon>lokalmodel.tt</DependentUpon>
+      <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="BOOK.cs">
-      <DependentUpon>lokalmodel.tt</DependentUpon>
+      <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="CLASSIFICATION.cs">
-      <DependentUpon>lokalmodel.tt</DependentUpon>
+      <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\EAuthor.cs" />
     <Compile Include="EntityModel\EBooks.cs" />
@@ -116,6 +116,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model2.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model3.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="swagbase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -157,6 +172,13 @@
     <None Include="Model2.edmx.diagram">
       <DependentUpon>Model2.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Model3.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model3.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model3.edmx.diagram">
+      <DependentUpon>Model3.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="swagbase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -197,6 +219,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model2.edmx</DependentUpon>
       <LastGenOutput>Model2.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model3.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model3.edmx</DependentUpon>
+      <LastGenOutput>Model3.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model3.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model3.edmx</DependentUpon>
+      <LastGenOutput>Model3.cs</LastGenOutput>
     </Content>
     <Content Include="swagbase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
