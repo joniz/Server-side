@@ -1,4 +1,4 @@
-﻿@model service.Models.Books
+﻿@model service.Models.viewModel
 
 
 <h2>editBook</h2>
@@ -6,7 +6,7 @@
 {
 <form>
     <div class="form-group">
-        <label for="exampleInputEmail1">Titel of book: <small>@Model._title</small></label>
+        <label for="exampleInputEmail1">Titel of book: <small>@Model.book._title</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text">
         
     </div>
@@ -14,7 +14,7 @@
         
             <label>
                 Author(s):
-                @foreach (var author in Model.AUTHORS)
+                @foreach (var author in Model.book.AUTHORS)
                 {
                     <small>[@author._lastName, @author._firstName]</small>
                 }
@@ -23,7 +23,7 @@
             <label for="exampleInputPassword1"></label>
         <div id="authorDiv">
             <select class="form-control" id="authorSelect">
-                @foreach (var author in Model.AUTHORS)
+                @foreach (var author in Model.authorList)
                 {
 
 
@@ -36,27 +36,27 @@
         <button  id="addDiv"  class="glyphicon glyphicon-plus" type="button"></button>
     </div>
     <div class="form-group">
-        <label>ISBN: <small>@Model._ISBN</small></label>
+        <label>ISBN: <small>@Model.book._ISBN</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="ISBN">
         
     </div>
     <div class="form-group">
-        <label>Publication year: <small>@Model._publicationYear</small></label>
+        <label>Publication year: <small>@Model.book._publicationYear</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="publicationYear">
 
     </div>
     <div class="form-group">
-        <label>Publication info: <small>@Model._publicationInfo</small></label>
+        <label>Publication info: <small>@Model.book._publicationInfo</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="publicationInfo">
 
     </div>
     <div class="form-group">
-        <label>Pages: <small>@Model._pages</small></label>
+        <label>Pages: <small>@Model.book._pages</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="pages">
 
     </div>
     <div class="form-group">
-        <label>Classification: <small>@Model.CLASSIFICATION._signum</small></label>
+        <label>Classification: <small>@Model.book.CLASSIFICATION._signum</small></label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="pages">
 
     </div>

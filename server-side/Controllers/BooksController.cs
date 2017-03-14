@@ -58,7 +58,11 @@ namespace server_side.Controllers
         }
         public ActionResult showEditView(string isbn)
         {
-            return View("editBook",Books.getBook(isbn));
+            viewModel _viewModel = new viewModel();
+            _viewModel.book = Books.getBook(isbn);
+            _viewModel.authorList = Author.getAuthorList();
+
+            return View("editBook",_viewModel);
         }
         public ActionResult editBook(string ISBN)
         {
