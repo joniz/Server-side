@@ -52,6 +52,11 @@ namespace server_side.Controllers
         }
         public ActionResult createBook()
         {
+            //viewModel _viewModel = new viewModel();
+            //_viewModel.authorList = Books.getAllA();
+
+            //return View(_viewModel);
+
             return View(Books.getAllA());
             
         }

@@ -15,6 +15,7 @@
 <div class="form-group">
     <label for="sel1">Select author:</label>
     <select class="form-control" id="sel1">
+
         @foreach (var authors in Model.AUTHORS)
         {
             <option>@authors._firstName, @authors._lastName</option>
