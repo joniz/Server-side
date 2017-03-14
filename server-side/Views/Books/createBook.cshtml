@@ -1,27 +1,18 @@
 ﻿
-@model service.Models.Books
+@model List<service.Models.Author>
 
 @{
     ViewBag.Title = "createBook";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+$("button").click(function(){
+        $("authorDrop").clone().appendTo("body");
+        });
 <h2>Create Book</h2>
 
 <div class="form-group">
     <label for="usr">Title:</label>
     <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="sel1">Select author:</label>
-    <select class="form-control" id="sel1">
-
-        @foreach (var authors in Model.AUTHORS)
-        {
-            <option>@authors._firstName, @authors._lastName</option>
-        }
-
-    </select>
 </div>
 <div class="form-group">
     <label for="usr">Publication year:</label>
@@ -42,6 +33,18 @@
 <div class="form-group">
     <label for="comment">Publication info</label>
     <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+
+<div id="authorDrop" class="form-group">
+    <label for="sel1">Select author:</label>
+    <select class="form-control" id="sel1">
+
+        @foreach (var authors in Model)
+        {
+            <option>@authors._firstName, @authors._lastName</option>
+        }
+
+    </select>
 </div>
 <div class="col-md-12">
     <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right">Add</a>

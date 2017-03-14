@@ -52,19 +52,17 @@ namespace server_side.Controllers
         }
         public ActionResult createBook()
         {
-            //viewModel _viewModel = new viewModel();
-            //_viewModel.authorList = Books.getAllA();
-
-            //return View(_viewModel);
-
-            return View(Books.getAllA());
+            
+            return View(Author.getAuthorList().ToList());
             
         }
-        public ActionResult editBook(string isbn)
+        public ActionResult showEditView(string isbn)
         {
-            return View(Books.getBook(isbn));
-        } 
-
-
+            return View("editBook",Books.getBook(isbn));
+        }
+        public ActionResult editBook(string ISBN)
+        {
+            return View();
+        }
     }
 }

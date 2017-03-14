@@ -21,24 +21,30 @@ namespace service.Models
         public Classification CLASSIFICATION { get; set; }
         public List<Author> AUTHORS { get; set; }
 
-        static private EBooks e_ISBN = new EBooks();
+        static private EBooks e_BookObject = new EBooks();
 
         static public Books getBook(string ISBN)
         {
-            return Mapper.Map<Books>(e_ISBN.Read(ISBN));
+            return Mapper.Map<Books>(e_BookObject.Read(ISBN));
         }
         static public List<Books> getBookList()
         {
-            return Mapper.Map<List<BOOK>, List<Books>>(e_ISBN.List());
+            return Mapper.Map<List<BOOK>, List<Books>>(e_BookObject.List());
         }
         static public List<Author> getBookAuthor(string isbn)
         {
-            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.AuthorList(isbn));
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.AuthorList(isbn));
+        }
+        static public void updateBook(Books bookObject)
+        {
+            e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
+
         }
         static public List<Author> getAllA()
         {
-            return Mapper.Map<List<AUTHOR>, List<Author>>(e_ISBN.getAllAuthors());
+            return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.getAllAuthors());
+
+
         }
-        
     }
 }
