@@ -64,9 +64,9 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string ISBN)
+        public ActionResult editBook(string title, List<Author> aID, string ISBN, int publicationYear, string publicationInfo, string signum)
         {
-            return View();
+            return View("editBook");
         }
     }
 }
