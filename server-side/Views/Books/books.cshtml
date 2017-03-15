@@ -67,7 +67,7 @@
        
 </div>
 <div class="col-md-12">
-    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("createBook", "Books")'></a>
+    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("showCreateBook", "Books")'></a>
     @Html.PagedListPager(Model, page => Url.Action("bookSearch", new { page, Search = Request.QueryString["Search"] }))
     
 </div>

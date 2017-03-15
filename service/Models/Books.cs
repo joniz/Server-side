@@ -15,7 +15,7 @@ namespace service.Models
         public string _ISBN { get; set; }
         public string _title { get; set; }
         public int _signId { get; set; }
-        public int _publicationYear { get; set; }
+        public string _publicationYear { get; set; }
         public string _publicationInfo { get; set; }
         public int _pages { get; set; }
         public Classification CLASSIFICATION { get; set; }
@@ -43,9 +43,10 @@ namespace service.Models
         static public List<Author> getAllA()
         {
             return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.getAllAuthors());
-
-
-
+        }
+        static public void addBook(Books bookObj)
+        {
+            e_BookObject.Add(Mapper.Map<BOOK>(bookObj));
 
         }
     }

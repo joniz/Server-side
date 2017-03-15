@@ -16,6 +16,8 @@ namespace service.Models
        public string _firstName { get; set; }
        public string _lastName { get; set; }
        public int _birthYear { get; set; }
+        //public Classification CLASSIFICATION { get; set; }
+        //public List<Books> BOOKS { get; set; }
 
         static private EAuthor e_aID = new EAuthor();
 
