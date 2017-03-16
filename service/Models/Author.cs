@@ -12,12 +12,12 @@ namespace service.Models
    public class Author
     {
         
-       public int _aId { get; set; }
-       public string _firstName { get; set; }
-       public string _lastName { get; set; }
-       public int _birthYear { get; set; }
-        //public Classification CLASSIFICATION { get; set; }
-        //public List<Books> BOOKS { get; set; }
+       public int Aid { get; set; }
+       public string FirstName { get; set; }
+       public string LastName { get; set; }
+       public int BirthYear { get; set; }
+       public Classification CLASSIFICATION { get; set; }
+       public List<Books> BOOK { get; set; }
 
         static private EAuthor e_aID = new EAuthor();
 

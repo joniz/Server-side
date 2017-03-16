@@ -11,9 +11,10 @@ namespace service.Models
 {
     public class Classification
     {
-        public int _signId { get; set; }
-        public string _description { get; set; }
-        public string _signum { get; set; }
+        public int SignId { get; set; }
+        public string Description { get; set; }
+        public string Signum { get; set; }
+
 
         static private EClassification e_classification = new EClassification();
 

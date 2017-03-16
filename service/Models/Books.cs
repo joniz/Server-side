@@ -12,12 +12,12 @@ namespace service.Models
 {
     public class Books
     {
-        public string _ISBN { get; set; }
-        public string _title { get; set; }
-        public int _signId { get; set; }
-        public string _publicationYear { get; set; }
-        public string _publicationInfo { get; set; }
-        public int _pages { get; set; }
+        public string ISBN { get; set; }
+        public string Title { get; set; }
+        public int SignId { get; set; }
+        public string PublicationYear { get; set; }
+        public string PublicationInfo { get; set; }
+        public int pages { get; set; }
         public Classification CLASSIFICATION { get; set; }
         public List<Author> AUTHORS { get; set; }
 

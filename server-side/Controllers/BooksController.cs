@@ -24,7 +24,7 @@ namespace server_side.Controllers
             {
                 foreach (var book in Books.getBookList())
                 {
-                    if (book._title.Contains(search) || book._ISBN.Contains(search))
+                    if (book.Title.Contains(search) || book.ISBN.Contains(search))
                     {
                         _bookList.Add(book);
                     }
@@ -61,13 +61,13 @@ namespace server_side.Controllers
         public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
         {
             Books _bookObj = new Books();
-            _bookObj._title = title;
-            _bookObj._publicationYear = publicationYear;
-            _bookObj._signId = signId;
+            _bookObj.Title = title;
+            _bookObj.PublicationYear = publicationYear;
+            _bookObj.SignId = signId;
             _bookObj.CLASSIFICATION = Classification.getClassification(signId);
-            _bookObj._ISBN = isbn;
-            _bookObj._pages = pages;
-            _bookObj._publicationInfo = publicationInfo;
+            _bookObj.ISBN = isbn;
+            _bookObj.pages = pages;
+            _bookObj.PublicationInfo = publicationInfo;
 
             List<Author> authorList = new List<Author>();
             foreach (int id in aID)

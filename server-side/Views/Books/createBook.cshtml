@@ -19,7 +19,7 @@
         <select class="form-control" id="sel1" name="aID">
             @foreach (var authors in Model.authorList)
             {
-                <option value="@authors._aId">@authors._firstName, @authors._lastName</option>
+                <option value="@authors.Aid">@authors.FirstName, @authors.LastName</option>
             }
 
         </select>
@@ -33,7 +33,7 @@
         <select class="form-control" name="signId">
             @foreach (var classi in Model.classificationList)
             {
-                <option value="@classi._signId">@classi._signum</option>
+                <option value="@classi.SignId">@classi.Signum</option>
             }
         </select>
     </div>
