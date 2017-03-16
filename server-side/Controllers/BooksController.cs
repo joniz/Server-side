@@ -14,6 +14,10 @@ namespace server_side.Controllers
         // GET: Books
         public ActionResult books(int? page)
         {
+            viewModel _viewModel = new viewModel();
+            _viewModel.bookList = Books.getBookList();
+            
+
             return View(Books.getBookList().ToPagedList(page ?? 1, 15));
                 
         }
@@ -90,9 +94,9 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string title, List<Author> aID, string ISBN, int publicationYear, string publicationInfo, string signum)
+        public ActionResult editBook(string title, List<int> aID, string ISBN, int publicationYear, string publicationInfo, int signId)
         {
-            return View("editBook");
+            return View("books");
         }
     }
 }

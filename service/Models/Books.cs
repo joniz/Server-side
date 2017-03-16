@@ -37,7 +37,7 @@ namespace service.Models
         }
         static public void updateBook(Books bookObject)
         {
-            e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
+            //e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
 
         }
         static public List<Author> getAllA()

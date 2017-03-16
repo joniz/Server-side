@@ -27,8 +27,8 @@ namespace repository
         public string publicationinfo { get; set; }
         public Nullable<short> pages { get; set; }
     
-        public CLASSIFICATION CLASSIFICATION { get; set; }
+        public virtual CLASSIFICATION CLASSIFICATION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<AUTHOR> AUTHORs { get; set; }
+        public virtual ICollection<AUTHOR> AUTHORs { get; set; }
     }
 }

@@ -36,7 +36,7 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Author</th>
+                <th>Signum</th>
                 <th>Pages</th>
                 <th>ISBN</th>
             </tr>
@@ -50,7 +50,7 @@
 
                     <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books.ISBN})'">
                         <td>@books.Title</td>      
-                        <td>@books.PublicationInfo</td>
+                        <td>@books.CLASSIFICATION.Signum</td>
                         <td>@books.pages</td>
                         
                         <td>@books.ISBN</td>
