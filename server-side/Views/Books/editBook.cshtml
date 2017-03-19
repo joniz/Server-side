@@ -1,7 +1,8 @@
 ﻿@model service.Models.viewModel
 
 
-<h2>editBook</h2>
+<h2>Edit Book</h2>
+
 @using (Html.BeginForm("editBook", "Books", FormMethod.Get))
 {
 <form>
@@ -25,7 +26,6 @@
             <select class="form-control" id="authorSelect">
                 @foreach (var author in Model.authorList)
                 {
-
 
                     <option value="aID">@author._firstName @author._lastName</option>
                 }
@@ -73,4 +73,4 @@
         });
 
     });
-    </script>
+</script>

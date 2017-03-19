@@ -5,13 +5,34 @@
     ViewBag.Title = "createBook";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-$("button").click(function(){
-        $("authorDrop").clone().appendTo("body");
-        });
+
 <h2>Create Book</h2>
 
 <div class="form-group">
     <label for="usr">Title:</label>
+    <input type="text" class="form-control" id="usr">
+    @Html.TextBoxFor(m=> m._title)
+</div>
+
+<div class="form-group">
+
+    <label for="sel1">Select author:</label>
+
+    <div id="authorDiv">
+        <select class="form-control" id="authorSelect">
+            @foreach (var author in Model)
+            {
+
+                <option value="aID">@author._firstName @author._lastName</option>
+            }
+        </select>
+    </div>
+
+    <button id="addDiv" class="glyphicon glyphicon-plus" type="button"></button>
+</div>
+
+<div class="form-group">
+    <label for="usr">Isbn:</label>
     <input type="text" class="form-control" id="usr">
 </div>
 <div class="form-group">
@@ -19,15 +40,11 @@ $("button").click(function(){
     <input type="text" class="form-control" id="usr">
 </div>
 <div class="form-group">
+    <label for="usr">Pages:</label>
+    <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
     <label for="usr">Sign Id:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="usr">Isbn:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="usr">Paged:</label>
     <input type="text" class="form-control" id="usr">
 </div>
 <div class="form-group">
@@ -35,18 +52,16 @@ $("button").click(function(){
     <textarea class="form-control" rows="5" id="comment"></textarea>
 </div>
 
-<div id="authorDrop" class="form-group">
-    <label for="sel1">Select author:</label>
-    <select class="form-control" id="sel1">
-
-        @foreach (var authors in Model)
-        {
-            <option>@authors._firstName, @authors._lastName</option>
-        }
-
-    </select>
-</div>
 <div class="col-md-12">
     <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right">Add</a>
 </div>
 
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $("#addDiv").click(function () {
+            $('#authorSelect').clone().appendTo("#authorDiv");
+        });
+    });
+</script>
