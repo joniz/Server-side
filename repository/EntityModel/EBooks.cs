@@ -48,6 +48,7 @@ namespace repository.EntityModel
         }
         public BOOK Read(string isbn)
         {
+
             using (var db = new dbtestEntitiesEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
@@ -60,18 +61,40 @@ namespace repository.EntityModel
         {
             using (var db = new dbtestEntitiesEntities())
             {
+                List<AUTHOR> auths = bookObj.AUTHORs.ToList();
+
+
+                bookObj.AUTHORs = null;
+                bookObj.CLASSIFICATION = null;
+
                 db.BOOKs.Add(bookObj);
+
+
+                foreach (AUTHOR a in auths)
+                {
+                    db.AUTHORs.Attach(a);
+                    a.BOOKs.Add(bookObj);
+                    db.Entry(a).State = EntityState.Modified;
+
+                }
+
                 db.SaveChanges();
-            }
         }
-        public void Update(BOOK bookObj)
+        }
+        public void Update(string isbn, int authId)
         {
             using (var db = new dbtestEntitiesEntities())
             {
+                AUTHOR a = new AUTHOR { Aid = authId };  //Skapa dummy objekt av författaren
+                db.AUTHORs.Attach(a);
 
-                db.BOOKs.Attach(bookObj);
-                db.Entry(bookObj).State = EntityState.Modified;
-                db.SaveChanges();
+                BOOK b = new BOOK { ISBN = isbn }; //Skapa dummy objekt av boken
+                db.BOOKs.Attach(b);
+
+                b.AUTHORs.Add(a); //Be EF uppdatera mellankopplingstabellen i contexten db
+
+                db.SaveChanges(); //Spara ned till databasen
+
             }
 
         }

@@ -13,14 +13,19 @@ namespace service.Models
 {
    public class Author
     {
+
+     
+
        [Required, RegularExpression("^[0-9]"), StringLength(15, MinimumLength = 1)]
-       public int _aId { get; set; }
+       public int Aid { get; set; }
        [Required, StringLength(30, MinimumLength = 2)]
-       public string _firstName { get; set; }
+       public string FirstName { get; set; }
        [Required, StringLength(30, MinimumLength = 2)]
-       public string _lastName { get; set; }
+       public string LastName { get; set; }
        [Required, RegularExpression("^[0-9]{4}")]
-       public int _birthYear { get; set; }
+       public int BirthYear { get; set; }
+       public Classification CLASSIFICATION { get; set; }
+       public List<Books> BOOK { get; set; }
 
         static private EAuthor e_aID = new EAuthor();
 

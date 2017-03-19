@@ -48,10 +48,10 @@
             {
 
 
-                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author._aId})'">
-                    <td>@author._firstName</td>
-                    <td>@author._lastName</td>
-                    <td>@author._birthYear</td>
+                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author.Aid})'">
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                    <td>@author.BirthYear</td>
                     
                 </tr>
             }

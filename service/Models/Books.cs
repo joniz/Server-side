@@ -13,19 +13,17 @@ namespace service.Models
 {
     public class Books
     {
+
         [StringLength(14, MinimumLength = 6), Required(ErrorMessage = "You must enter a isbn, 6-14 digits.")]
-        public string _ISBN { get; set; }
-
+        public string ISBN { get; set; }
         [StringLength(140, MinimumLength = 3), Required, RegularExpression("^[0-9]")]
-        public string _title { get; set; }
-        public int _signId { get; set; }
+        public string Title { get; set; }
+        public int SignId { get; set; }
+        [Required(ErrorMessage = "You must enter a publication year, 4 digits."), RegularExpression("^[0-9]"), StringLength(4, MinimumLength = 4), Range(400, 2017)]
+        public string PublicationYear { get; set; }
+        public string PublicationInfo { get; set; }
+        public int pages { get; set; }
 
-        
-        [Required(ErrorMessage = "You must enter a publication year, 4 digits."), RegularExpression("^[0-9]"), StringLength(4, MinimumLength = 4), Range(400, 2018)]
-        public int _publicationYear { get; set; }
-
-        public string _publicationInfo { get; set; }
-        public int _pages { get; set; }
         public Classification CLASSIFICATION { get; set; }
 
 
@@ -48,12 +46,17 @@ namespace service.Models
         }
         static public void updateBook(Books bookObject)
         {
-            e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
+            //e_BookObject.Update(Mapper.Map<BOOK>(bookObject));
 
         }
         static public List<Author> getAllA()
         {
             return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.getAllAuthors());
+
+        }
+        static public void addBook(Books bookObj)
+        {
+            e_BookObject.Add(Mapper.Map<BOOK>(bookObj));
 
 
         }

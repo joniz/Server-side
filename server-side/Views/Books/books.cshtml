@@ -36,7 +36,7 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Author</th>
+                <th>Signum</th>
                 <th>Pages</th>
                 <th>ISBN</th>
             </tr>
@@ -48,12 +48,12 @@
                 @foreach (var books in Model)
                 {
 
-                    <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books._ISBN})'">
-                        <td>@books._title</td>      
-                        <td>@books._publicationInfo</td>
-                        <td>@books._pages</td>
+                    <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books.ISBN})'">
+                        <td>@books.Title</td>      
+                        <td>@books.CLASSIFICATION.Signum</td>
+                        <td>@books.pages</td>
                         
-                        <td>@books._ISBN</td>
+                        <td>@books.ISBN</td>
 
                     </tr>
                     
@@ -67,7 +67,7 @@
        
 </div>
 <div class="col-md-12">
-    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("createBook", "Books")'></a>
+    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("showCreateBook", "Books")'></a>
     @Html.PagedListPager(Model, page => Url.Action("bookSearch", new { page, Search = Request.QueryString["Search"] }))
     
 </div>

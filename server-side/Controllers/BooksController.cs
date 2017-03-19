@@ -14,6 +14,10 @@ namespace server_side.Controllers
         // GET: Books
         public ActionResult books(int? page)
         {
+            viewModel _viewModel = new viewModel();
+            _viewModel.bookList = Books.getBookList();
+            
+
             return View(Books.getBookList().ToPagedList(page ?? 1, 15));
                 
         }
@@ -24,7 +28,7 @@ namespace server_side.Controllers
             {
                 foreach (var book in Books.getBookList())
                 {
-                    if (book._title.Contains(search) || book._ISBN.Contains(search))
+                    if (book.Title.Contains(search) || book.ISBN.Contains(search))
                     {
                         _bookList.Add(book);
                     }
@@ -50,11 +54,38 @@ namespace server_side.Controllers
             
             
         }
-        public ActionResult createBook()
+        public ActionResult showCreateBook()
         {
+
+            viewModel _viewModel = new viewModel();
+            _viewModel.authorList = Author.getAuthorList();
+            _viewModel.classificationList = Classification.getClassificationList();
+            return View("createBook",_viewModel);
             
-            return View(Author.getAuthorList().ToList());
-            
+        }
+        public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
+        {
+            Books _bookObj = new Books();
+            _bookObj.Title = title;
+            _bookObj.PublicationYear = publicationYear;
+            _bookObj.SignId = signId;
+            _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+            _bookObj.ISBN = isbn;
+            _bookObj.pages = pages;
+            _bookObj.PublicationInfo = publicationInfo;
+
+            List<Author> authorList = new List<Author>();
+            foreach (int id in aID)
+            {
+                authorList.Add(Author.getAuthor(id));
+            }
+            _bookObj.AUTHORS = authorList;
+
+            if (ModelState.IsValid)
+            {
+                Books.addBook(_bookObj);
+            }
+            return View("books", Books.getBookList().ToPagedList(1, 15));
         }
         public ActionResult showEditView(string isbn)
         {
@@ -64,9 +95,9 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string ISBN)
+        public ActionResult editBook(string title, List<int> aID, string ISBN, int publicationYear, string publicationInfo, int signId)
         {
-            return View();
+            return View("books");
         }
     }
 }

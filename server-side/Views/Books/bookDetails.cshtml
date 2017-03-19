@@ -10,22 +10,22 @@
         
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@Model.book._title</div>
+                <div class="panel-heading">@Model.book.Title</div>
                 <div class="panel-body">
 
-                    <small>Info: @Model.book._publicationInfo</small>
+                    <small>Info: @Model.book.PublicationInfo</small>
                     <br />
-                    <small>ISBN: @Model.book._ISBN</small>
+                    <small>ISBN: @Model.book.ISBN</small>
                     <br />
-                    <small>Pages: @Model.book._pages</small>
+                    <small>Pages: @Model.book.pages</small>
                     <br />
                     <small>Authors: </small>
                     @foreach (var authors in Model.authorList)
                     {
-                    <small>@authors._firstName, @authors._lastName</small>
+                    <small>@authors.FirstName, @authors.LastName</small>
                     }
                     <div class="col-md-12">
-                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditView", "Books", new {isbn = @Model.book._ISBN})'></a>
+                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditView", "Books", new {isbn = @Model.book.ISBN})'></a>
                         
                     </div>
                 </div>

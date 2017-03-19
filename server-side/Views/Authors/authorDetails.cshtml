@@ -9,17 +9,17 @@
 
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@Model.author._firstName @Model.author._lastName</div>
+                <div class="panel-heading">@Model.author.FirstName @Model.author.LastName</div>
                 <div class="panel-body">
 
-                    <small>Birth year: @Model.author._birthYear</small>
+                    <small>Birth year: @Model.author.BirthYear</small>
                     <br />
-                    <small>unique ID: @Model.author._aId</small>
+                    <small>unique ID: @Model.author.Aid</small>
                     <br />
                     <small>Books:</small>
                     @foreach (var books in Model.bookList)
                     {
-                        <small>@books._title</small>
+                        <small>@books.Title</small>
                     }
                 </div>
             </div>
