@@ -96,7 +96,7 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string title, List<int> aID, string ISBN, string publicationYear, string publicationInfo, int signId, int pages)
+        public ActionResult editBook(string title, List<int> aID, string publicationYear, string publicationInfo, int signId, int pages)
         {
             Books _bookObj = new Books();
             _bookObj.Title = title;
@@ -106,7 +106,6 @@ namespace server_side.Controllers
                 authorList.Add(Author.getAuthor(id));
             }
             _bookObj.AUTHORS = authorList;
-            _bookObj.ISBN = ISBN;
             _bookObj.PublicationYear = publicationYear;
             _bookObj.PublicationInfo = publicationInfo;
             _bookObj.SignId = signId;

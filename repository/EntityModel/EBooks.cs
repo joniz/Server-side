@@ -39,7 +39,7 @@ namespace repository.EntityModel
 
         public List<AUTHOR> AuthorList(string isbn)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().AUTHORs.ToList();
             }
@@ -84,9 +84,9 @@ namespace repository.EntityModel
         public void Update(BOOK bookObj)
         {
             
-            using (var db = new swagbaseEntities())
+            using ( var db = new swagbaseEntities())
             {
-                BOOK dummyBook = db.BOOKs.Include(x => x.AUTHORs).FirstOrDefault(a => a.ISBN == bookObj.ISBN);
+                BOOK dummyBook = db.BOOKs.Include("AUTHORs").FirstOrDefault(a => a.ISBN == bookObj.ISBN);
                 db.BOOKs.Attach(dummyBook);
                 db.CLASSIFICATIONs.Attach(db.CLASSIFICATIONs.Find(bookObj.SignId));
                 dummyBook.AUTHORs.Clear();
@@ -112,7 +112,7 @@ namespace repository.EntityModel
         
         public void Delete(BOOK bookObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
 
                 BOOK bISBN = db.BOOKs.Find(bookObj.ISBN);
