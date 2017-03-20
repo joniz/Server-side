@@ -12,7 +12,7 @@ namespace repository.EntityModel
         public List<CLASSIFICATION> List()
         {
 
-            using (var db = new dbtestEntities())
+            using (var db = new dbtestEntitiesEntities())
             {
 
                 return db.CLASSIFICATIONs.ToList();
@@ -20,7 +20,7 @@ namespace repository.EntityModel
         }
         public CLASSIFICATION Read(int signId)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new dbtestEntitiesEntities())
             {
                 return db.CLASSIFICATIONs.Find(signId);
             }
@@ -28,7 +28,7 @@ namespace repository.EntityModel
         }
         public void Add(CLASSIFICATION classiObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new dbtestEntitiesEntities())
             {
                 db.CLASSIFICATIONs.Add(classiObj);
                 db.SaveChanges();
@@ -36,7 +36,7 @@ namespace repository.EntityModel
         }
         public void Update(CLASSIFICATION classiObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new dbtestEntitiesEntities())
             {
 
                 db.CLASSIFICATIONs.Attach(classiObj);
@@ -47,7 +47,7 @@ namespace repository.EntityModel
         }
         public void Delete(CLASSIFICATION classiObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new dbtestEntitiesEntities())
             {
 
                 CLASSIFICATION csignID = db.CLASSIFICATIONs.Find(classiObj.SignId);
