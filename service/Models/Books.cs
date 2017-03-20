@@ -60,5 +60,10 @@ namespace service.Models
 
 
         }
+        static public void editBook(Books bookObj)
+        {
+            e_BookObject.Update(Mapper.Map<BOOK>(bookObj));
+
+        }
     }
 }
