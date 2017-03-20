@@ -96,6 +96,12 @@ namespace server_side.Controllers
         }
         public ActionResult editBook(string title, List<int> aID, string ISBN, int publicationYear, string publicationInfo, int signId)
         {
+            //bokobjet och lísta, författae-id
+            //lista med alla författare till den boken
+            //ny lista, AUTHOR, foreach mappa över
+            //kalla update
+            //rensa författare från bokens lista
+            //dummyobjekt, attach senare
             return View("books");
         }
     }
