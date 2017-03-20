@@ -14,31 +14,16 @@
         <label for="usr">Title:</label>
         <input type="text" class="form-control" id="usr" name="title">
     </div>
-    <div class="form-group">
-        <label for="sel1">Select author:</label>
-        <select class="form-control" id="sel1" name="aID">
-            @foreach (var authors in Model.authorList)
-            {
-                <option value="@authors.Aid">@authors.FirstName, @authors.LastName</option>
-            }
-
-<<<<<<< HEAD
-<div class="form-group">
-    <label for="usr">Title:</label>
-    <input type="text" class="form-control" id="usr">
-     
-</div>
-
 <div class="form-group">
 
     <label for="sel1">Select author:</label>
 
     <div id="authorDiv">
         <select class="form-control" id="authorSelect">
-            @foreach (var author in Model)
+            @foreach (var author in Model.authorList)
             {
 
-                <option value="aID">@author._firstName @author._lastName</option>
+                <option value="aID">@author.FirstName @author.LastName</option>
             }
         </select>
     </div>
@@ -46,43 +31,8 @@
     <button id="addDiv" class="glyphicon glyphicon-plus" type="button"></button>
 </div>
 
-<div class="form-group">
-    <label for="usr">Isbn:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="usr">Publication year:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="usr">Pages:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="usr">Sign Id:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="comment">Publication info</label>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-</div>
 
-<div class="col-md-12">
-    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right">Add</a>
-</div>
 
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        console.log("ready!");
-        $("#addDiv").click(function () {
-            $('#authorSelect').clone().appendTo("#authorDiv");
-        });
-    });
-</script>
-=======
-        </select>
-    </div>
     <div class="form-group">
         <label for="usr">Publication year:</label>
         <input type="text" class="form-control" id="" name="publicationYear">
@@ -113,4 +63,13 @@
     </div>
 </form>
 }
->>>>>>> 15ebf4f6fba6c01a6738e5f829e7115426f65cf6
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $("#addDiv").click(function () {
+            $('#authorSelect').clone().appendTo("#authorDiv");
+        });
+    });
+</script>

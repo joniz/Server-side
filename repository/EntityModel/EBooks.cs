@@ -81,23 +81,34 @@ namespace repository.EntityModel
                 db.SaveChanges();
         }
         }
-        public void Update(string isbn, int authId)
+        public void Update(BOOK bookObj)
         {
             using (var db = new swagbaseEntities())
             {
-                AUTHOR a = new AUTHOR { Aid = authId };  //Skapa dummy objekt av författaren
-                db.AUTHORs.Attach(a);
+                List<AUTHOR> authorList = bookObj.AUTHORs.ToList();
+                bookObj.AUTHORs = null;
+                BOOK dummyB = new BOOK
+                {
+                    ISBN = bookObj.ISBN
+                };
+                db.BOOKs.Attach(dummyB);
+                foreach (AUTHOR auth in authorList)
+                {
+                    db.AUTHORs.Attach(auth);
+                    auth.BOOKs.Add(dummyB);
+                }
+                dummyB.pages = bookObj.pages;
+                dummyB.Title = bookObj.Title;
+                dummyB.publicationinfo = bookObj.publicationinfo;
+                dummyB.PublicationYear = bookObj.publicationinfo;
+                dummyB.SignId = bookObj.SignId;
+                dummyB.CLASSIFICATION = bookObj.CLASSIFICATION;
 
-                BOOK b = new BOOK { ISBN = isbn }; //Skapa dummy objekt av boken
-                db.BOOKs.Attach(b);
-
-                b.AUTHORs.Add(a); //Be EF uppdatera mellankopplingstabellen i contexten db
-
-                db.SaveChanges(); //Spara ned till databasen
-
+                db.SaveChanges();
             }
 
         }
+        
         public void Delete(BOOK bookObj)
         {
             using (var db = new dbtestEntities())

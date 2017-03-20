@@ -85,19 +85,39 @@ namespace server_side.Controllers
             {
                 Books.addBook(_bookObj);
             }
-            return View("books", Books.getBookList().ToPagedList(1, 15));
+            return View("books", Books.getBookList().ToPagedList(1, 13));
         }
         public ActionResult showEditView(string isbn)
         {
             viewModel _viewModel = new viewModel();
             _viewModel.book = Books.getBook(isbn);
             _viewModel.authorList = Author.getAuthorList();
+            _viewModel.classificationList = Classification.getClassificationList();
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string title, List<int> aID, string ISBN, int publicationYear, string publicationInfo, int signId)
+        public ActionResult editBook(string title, List<int> aID, string ISBN, string publicationYear, string publicationInfo, int signId, int pages)
         {
-            return View("books");
+            Books _bookObj = new Books();
+            _bookObj.Title = title;
+            List<Author> authorList = new List<Author>();
+            foreach (int id in aID.ToList())
+            {
+                authorList.Add(Author.getAuthor(id));
+            }
+            _bookObj.AUTHORS = authorList;
+            _bookObj.ISBN = ISBN;
+            _bookObj.PublicationYear = publicationYear;
+            _bookObj.PublicationInfo = publicationInfo;
+            _bookObj.SignId = signId;
+            _bookObj.pages = pages;
+            _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+            if (ModelState.IsValid)
+            {
+                Books.editBook(_bookObj);
+            }
+
+            return View("books", Books.getBookList().ToPagedList(1, 13));
         }
     }
 }
