@@ -65,27 +65,31 @@ namespace server_side.Controllers
         }
         public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
         {
-            Books _bookObj = new Books();
-            _bookObj.Title = title;
-            _bookObj.PublicationYear = publicationYear;
-            _bookObj.SignId = signId;
-            _bookObj.CLASSIFICATION = Classification.getClassification(signId);
-            _bookObj.ISBN = isbn;
-            _bookObj.pages = pages;
-            _bookObj.PublicationInfo = publicationInfo;
-
-            List<Author> authorList = new List<Author>();
-            foreach (int id in aID)
-            {
-                authorList.Add(Author.getAuthor(id));
-            }
-            _bookObj.AUTHORS = authorList;
-
             if (ModelState.IsValid)
             {
-                Books.addBook(_bookObj);
+                Books _bookObj = new Books();
+                _bookObj.Title = title;
+                _bookObj.PublicationYear = publicationYear;
+                _bookObj.SignId = signId;
+                _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+                _bookObj.ISBN = isbn;
+                _bookObj.pages = pages;
+                _bookObj.PublicationInfo = publicationInfo;
+
+                List<Author> authorList = new List<Author>();
+                foreach (int id in aID)
+                {
+                    authorList.Add(Author.getAuthor(id));
+                }
+                _bookObj.AUTHORS = authorList;
+
+                if (ModelState.IsValid)
+                {
+                    Books.addBook(_bookObj);
+                }
             }
-            return View("books", Books.getBookList().ToPagedList(1, 13));
+                return View("books", Books.getBookList().ToPagedList(1, 13));
+            
         }
         public ActionResult showEditView(string isbn)
         {

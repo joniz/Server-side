@@ -85,24 +85,24 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities1())
             {
-                List<AUTHOR> authorList = bookObj.AUTHORs.ToList();
-                bookObj.AUTHORs = null;
-                BOOK dummyB = new BOOK
+                BOOK dummyBook = db.BOOKs.Include(x => x.AUTHORs).FirstOrDefault(a => a.ISBN == bookObj.ISBN);
+                db.BOOKs.Attach(dummyBook);
+                db.CLASSIFICATIONs.Attach(db.CLASSIFICATIONs.Find(bookObj.SignId));
+                dummyBook.AUTHORs.Clear();
+                List<int> authorsToDummy = bookObj.AUTHORs.Select(a => a.Aid).ToList();
+                dummyBook.pages = bookObj.pages;
+                dummyBook.Title = bookObj.Title;
+                dummyBook.publicationinfo = bookObj.publicationinfo;
+                dummyBook.PublicationYear = bookObj.publicationinfo;
+                dummyBook.SignId = bookObj.SignId;
+                dummyBook.CLASSIFICATION = bookObj.CLASSIFICATION;
+
+                foreach (int auth in authorsToDummy)
                 {
-                    ISBN = bookObj.ISBN
-                };
-                db.BOOKs.Attach(dummyB);
-                foreach (AUTHOR auth in authorList)
-                {
-                    db.AUTHORs.Attach(auth);
-                    auth.BOOKs.Add(dummyB);
+                    db.AUTHORs.Attach(db.AUTHORs.Find(auth));
+                    dummyBook.AUTHORs.Add(db.AUTHORs.Find(auth));
                 }
-                dummyB.pages = bookObj.pages;
-                dummyB.Title = bookObj.Title;
-                dummyB.publicationinfo = bookObj.publicationinfo;
-                dummyB.PublicationYear = bookObj.publicationinfo;
-                dummyB.SignId = bookObj.SignId;
-                dummyB.CLASSIFICATION = bookObj.CLASSIFICATION;
+              
 
                 db.SaveChanges();
             }

@@ -1,5 +1,7 @@
 ﻿@model service.Models.viewModel
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 @{
     ViewBag.Title = "createBook";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,11 +20,11 @@
             <label for="sel1">Select author:</label>
 
             <div id="authorDiv">
-                <select class="form-control" id="authorSelect">
+                <select class="form-control" name="aID">
                     @foreach (var author in Model.authorList)
                     {
 
-                        <option value="aID">@author.FirstName @author.LastName</option>
+                        <option value="@author.Aid">@author.FirstName @author.LastName</option>
                     }
                 </select>
             </div>
