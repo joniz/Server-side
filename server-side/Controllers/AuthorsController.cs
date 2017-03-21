@@ -18,11 +18,30 @@ namespace server_side.Controllers
         }
         public ActionResult authorDetails(int authorId)
         {
-            viewModel _viewModel = new viewModel();
-           
-            //Author.getAuthor(authorId);
-            
             return View(Author.getAuthor(authorId));
+        }
+        public ActionResult showEditAuthor(int aID)
+        {
+            viewModel _viewModel = new viewModel();
+            _viewModel.authorList = Author.getAuthorList();
+            _viewModel.author = Author.getAuthor(aID);
+
+            return View("editAuthor", _viewModel);
+
+        }
+        public ActionResult editAuthor(string firstName, string lastName, int birthYear, int aID)
+        {
+            Author _authObj = new Author();
+            _authObj.FirstName = firstName;
+            _authObj.LastName = lastName;
+            _authObj.BirthYear = birthYear;
+            _authObj.Aid = aID;
+            if (ModelState.IsValid)
+            {
+                Author.editAuthor(_authObj);
+            }
+
+            return View("authors", Author.getAuthorList().ToPagedList(1, 15));
 
 
         }

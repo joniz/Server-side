@@ -267,6 +267,7 @@
     <Content Include="Views\Administrator\administratorDetails.cshtml" />
     <Content Include="Views\Books\createBook.cshtml" />
     <Content Include="Views\Books\editBook.cshtml" />
+    <Content Include="Views\Authors\editAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

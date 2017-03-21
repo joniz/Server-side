@@ -86,30 +86,6 @@ namespace repository.EntityModel
             
             using ( var db = new swagbaseEntities())
             {
-                BOOK bookToUpdate = db.BOOKs.Include("AUTHORs").FirstOrDefault(b => b.ISBN == bookObj.ISBN);
-
-                db.BOOKs.Attach(bookToUpdate);
-                db.CLASSIFICATIONs.Attach(db.CLASSIFICATIONs.Find(bookObj.SignId));
-
-
-                bookToUpdate.publicationinfo = bookObj.publicationinfo;
-                bookToUpdate.Title = bookObj.Title;
-                bookToUpdate.pages = bookObj.pages;
-                bookToUpdate.ISBN = bookObj.ISBN;
-
-
-                bookToUpdate.AUTHORs.Clear();
-                List<int> authorsToUpdate = bookObj.AUTHORs.Select(a => a.Aid).ToList();
-
-                foreach (int aid in authorsToUpdate)
-                {
-                    db.AUTHORs.Attach(db.AUTHORs.Find(aid));
-                    bookToUpdate.AUTHORs.Add(db.AUTHORs.Find(aid)); //Be EF uppdatera mellankopplingstabellen i contexten db
-                }
-
-                db.SaveChanges(); //Spara ned till databasen
-
-
                 BOOK dummyBook = db.BOOKs.Include("AUTHORs").FirstOrDefault(a => a.ISBN == bookObj.ISBN);
                 db.BOOKs.Attach(dummyBook);
                 db.CLASSIFICATIONs.Attach(db.CLASSIFICATIONs.Find(bookObj.SignId));

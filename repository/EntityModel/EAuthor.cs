@@ -55,9 +55,18 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities())
             {
+                AUTHOR dummyAuthor = db.AUTHORs.Include("BOOKs").FirstOrDefault(a => a.Aid == authorObj.Aid);
 
-                db.AUTHORs.Attach(authorObj);
-                db.Entry(authorObj).State = EntityState.Modified;
+                db.AUTHORs.Attach(dummyAuthor);
+                dummyAuthor.BirthYear = authorObj.BirthYear;
+                dummyAuthor.FirstName = authorObj.FirstName;
+                dummyAuthor.LastName = authorObj.LastName;
+
+                //dummyAuthor.BOOKs.Clear();
+                //AUTHOR booksToDummy = authorObj.BOOKs.Select
+
+
+                db.Entry(dummyAuthor).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

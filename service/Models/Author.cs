@@ -42,6 +42,10 @@ namespace service.Models
         {
             return Mapper.Map<List<BOOK>, List<Books>>(e_aID.getBookList(aId));
         }
+        static public void editAuthor(Author authObj)
+        {
+            e_aID.Update(Mapper.Map<AUTHOR>(authObj));
+        }
         
     }
 }
