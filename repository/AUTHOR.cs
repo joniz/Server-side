@@ -26,6 +26,6 @@ namespace repository
         public string BirthYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BOOK> BOOKs { get; set; }
+        public ICollection<BOOK> BOOKs { get; set; }
     }
 }

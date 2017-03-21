@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using repository;
+using service.Models;
 
 namespace service.Configuration
 {
@@ -12,7 +13,7 @@ namespace service.Configuration
     {
         public ToBookProfile(){
 
-        CreateMap<BOOK,Models.Books >();
+        CreateMap<BOOK,Models.Books >().ForMember(dest => dest.AUTHORs, opt => opt.MapFrom(BOOK => BOOK.AUTHORs)).MaxDepth(2);
             
         }
        
@@ -21,7 +22,7 @@ namespace service.Configuration
     {
         public FromBookProfile()
         {
-            CreateMap<Models.Books, BOOK>();
+            CreateMap<Models.Books, BOOK>().ForMember(dest => dest.AUTHORs, opt => opt.MapFrom(Books => Books.AUTHORs)).MaxDepth(2);
         }
 
 

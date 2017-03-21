@@ -11,7 +11,7 @@ namespace repository.EntityModel
     {
         public List<AUTHOR> List() {
 
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
 
                 return db.AUTHORs.Include(x => x.BOOKs).ToList();
@@ -20,22 +20,23 @@ namespace repository.EntityModel
       
         public List<BOOK> getBookList(int aId)
         {
-            using(var db = new dbtestEntities())
+            using(var db = new swagbaseEntities())
             {
                 return db.AUTHORs.Include(x => x.BOOKs).Where(x => x.Aid == aId).First().BOOKs.ToList();
             }
     }
         public AUTHOR Read(int aID)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
-                return db.AUTHORs.Find(aID);
+                db.Configuration.LazyLoadingEnabled = false;
+                return db.AUTHORs.Include(x => x.BOOKs).Where(x => x.Aid ==  aID).First();
             }
 
         }
         public void Add(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
                 using(var transaction = db.Database.BeginTransaction())
                 {
@@ -52,7 +53,7 @@ namespace repository.EntityModel
         } 
         public void Update(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
 
                 db.AUTHORs.Attach(authorObj);
@@ -63,7 +64,7 @@ namespace repository.EntityModel
         }
         public void Delete(AUTHOR authorObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities())
             {
 
                 AUTHOR athID = db.AUTHORs.Find(authorObj.Aid);

@@ -28,7 +28,7 @@ namespace service.Models
 
 
         [Required(ErrorMessage = "You must enter atleast one author.")]
-        public List<Author> AUTHORS { get; set; }
+        public List<Author> AUTHORs { get; set; }
 
         static private EBooks e_BookObject = new EBooks();
 

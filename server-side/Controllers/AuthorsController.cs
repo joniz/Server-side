@@ -19,10 +19,10 @@ namespace server_side.Controllers
         public ActionResult authorDetails(int authorId)
         {
             viewModel _viewModel = new viewModel();
-            _viewModel.bookList = Author.getBooksFromAuthor(authorId);
-            _viewModel.author = Author.getAuthor(authorId);
-
-            return View(_viewModel);
+           
+            //Author.getAuthor(authorId);
+            
+            return View(Author.getAuthor(authorId));
 
 
         }

@@ -12,15 +12,15 @@ namespace service.Configuration
     {
         public ToAuthorProfile()
         {
-            
-            CreateMap<AUTHOR, Models.Author>();
+
+            CreateMap<AUTHOR, Models.Author>().ForMember(dest => dest.bookList, opt => opt.MapFrom(AUTHOR => AUTHOR.BOOKs)).MaxDepth(2);
         }
     }
     public class FromAuthorProfile : Profile
     {
         public FromAuthorProfile()
         {
-            CreateMap<Models.Author, AUTHOR>();
+            CreateMap<Models.Author, AUTHOR>().ForMember(dest => dest.BOOKs, opt => opt.MapFrom(Author => Author.bookList)).MaxDepth(2);
 
 
 

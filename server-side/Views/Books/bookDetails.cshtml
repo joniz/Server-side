@@ -22,8 +22,8 @@
                     <small>Authors: </small>
                     @foreach (var authors in Model.authorList)
                     {
-                        <a href='@Html.ActionLink("Link Text", "authorDetails", "Authors", new { authorId = Model.author.Aid }, null)'>author.FirstName author.LastName</a>
-
+                        <a href='@Url.Action("authorDetails", "Authors", new { authorId = authors.Aid })'>@authors.FirstName @authors.LastName</a>
+                        
                         
                     }
                     <div class="col-md-12">

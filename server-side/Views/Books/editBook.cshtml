@@ -11,28 +11,30 @@
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="title">
         
     </div>
-    <div class="form-group">
-        
+    
+        <div class="form-group">
+
             <label>
                 Author(s):
-                @foreach (var author in Model.book.AUTHORS)
+                @foreach (var author in Model.book.AUTHORs)
                 {
                     <small>[@author.LastName, @author.FirstName]</small>
                 }
             </label>
-        
+
             <label for="exampleInputPassword1"></label>
-        <div id="authorDiv">
-            <select class="form-control" name="aID">
-                @foreach (var author in Model.authorList)
+            <div id="authorDiv">
+                <select class="form-control" name="aID" id="authorSelect">
+                    @foreach (var author in Model.authorList)
                 {
-                    <option value="@author.Aid">@author.FirstName @author.LastName</option>
+                        <option value="@author.Aid">@author.FirstName @author.LastName</option>
 
-                }
-            </select>
-      
+                    }
+                </select>
 
-        </div>
+
+            </div>
+        
         <button  id="addDiv"  class="glyphicon glyphicon-plus" type="button"></button>
     </div>
     <label>ISBN:</label>

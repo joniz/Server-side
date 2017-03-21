@@ -24,8 +24,8 @@ namespace service.Models
        public string LastName { get; set; }
        [Required, RegularExpression("^[0-9]{4}")]
        public int BirthYear { get; set; }
-       public Classification CLASSIFICATION { get; set; }
-       public List<Books> BOOK { get; set; }
+       
+       public List<Books> bookList { get; set; }
 
         static private EAuthor e_aID = new EAuthor();
 

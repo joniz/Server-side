@@ -79,7 +79,7 @@ namespace server_side.Controllers
             {
                 authorList.Add(Author.getAuthor(id));
             }
-            _bookObj.AUTHORS = authorList;
+            _bookObj.AUTHORs = authorList;
 
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace server_side.Controllers
             {
                 authorList.Add(Author.getAuthor(id));
             }
-            _bookObj.AUTHORS = authorList;
+            _bookObj.AUTHORs = authorList;
             _bookObj.PublicationYear = publicationYear;
             _bookObj.PublicationInfo = publicationInfo;
             _bookObj.SignId = signId;
