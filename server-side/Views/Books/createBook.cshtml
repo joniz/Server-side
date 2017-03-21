@@ -14,16 +14,25 @@
         <label for="usr">Title:</label>
         <input type="text" class="form-control" id="usr" name="title">
     </div>
-    <div class="form-group">
-        <label for="sel1">Select author:</label>
-        <select class="form-control" id="sel1" name="aID">
-            @foreach (var authors in Model.authorList)
-            {
-                <option value="@authors.Aid">@authors.FirstName, @authors.LastName</option>
-            }
+<div class="form-group">
 
+    <label for="sel1">Select author:</label>
+
+    <div id="authorDiv">
+        <select class="form-control" name="aID">
+            @foreach (var author in Model.authorList)
+            {
+
+                <option value="@author.Aid">@author.FirstName @author.LastName</option>
+            }
         </select>
     </div>
+
+    <button id="addDiv" class="glyphicon glyphicon-plus" type="button"></button>
+</div>
+
+
+
     <div class="form-group">
         <label for="usr">Publication year:</label>
         <input type="text" class="form-control" id="" name="publicationYear">
@@ -54,3 +63,13 @@
     </div>
 </form>
 }
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $("#addDiv").click(function () {
+            $('#authorSelect').clone().appendTo("#authorDiv");
+        });
+    });
+</script>

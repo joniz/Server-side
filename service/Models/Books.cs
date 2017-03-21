@@ -7,18 +7,27 @@ using service.Mockups;
 using repository.EntityModel;
 using AutoMapper;
 using repository;
-namespace service.Models
+using System.ComponentModel.DataAnnotations;
 
+namespace service.Models
 {
     public class Books
     {
+
+        [StringLength(14, MinimumLength = 6), Required(ErrorMessage = "You must enter a isbn, 6-14 digits.")]
         public string ISBN { get; set; }
+        [StringLength(140, MinimumLength = 3), Required, RegularExpression("^[0-9]")]
         public string Title { get; set; }
         public int SignId { get; set; }
+        [Required(ErrorMessage = "You must enter a publication year, 4 digits."), RegularExpression("^[0-9]"), StringLength(4, MinimumLength = 4), Range(400, 2017)]
         public string PublicationYear { get; set; }
         public string PublicationInfo { get; set; }
         public int pages { get; set; }
+
         public Classification CLASSIFICATION { get; set; }
+
+
+        [Required(ErrorMessage = "You must enter atleast one author.")]
         public List<Author> AUTHORS { get; set; }
 
         static private EBooks e_BookObject = new EBooks();
@@ -43,10 +52,17 @@ namespace service.Models
         static public List<Author> getAllA()
         {
             return Mapper.Map<List<AUTHOR>, List<Author>>(e_BookObject.getAllAuthors());
+
         }
         static public void addBook(Books bookObj)
         {
             e_BookObject.Add(Mapper.Map<BOOK>(bookObj));
+
+
+        }
+        static public void editBook(Books bookObj)
+        {
+            e_BookObject.Update(Mapper.Map<BOOK>(bookObj));
 
         }
     }
