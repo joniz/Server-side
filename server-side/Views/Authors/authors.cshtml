@@ -59,4 +59,7 @@
 
     </table>
 </div>
-@Html.PagedListPager(Model, page => Url.Action("authors", new { page, Search = Request.QueryString["Search"] }))
+<div class="col-md-12">
+    <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("showCreateAuthor", "Authors")'></a>
+    @Html.PagedListPager(Model, page => Url.Action("authors", new { page, Search = Request.QueryString["Search"] }))
+</div>

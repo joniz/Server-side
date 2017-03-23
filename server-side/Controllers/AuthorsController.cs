@@ -45,5 +45,22 @@ namespace server_side.Controllers
 
 
         }
+        public ActionResult showCreateAuthor()
+        {
+            return View("createAuthor");
+        }
+        public ActionResult createAuthor(int birthYear, string firstName, string lastName)
+        {
+            Author _authotObj = new Author();
+            _authotObj.BirthYear = birthYear;
+            _authotObj.FirstName = firstName;
+            _authotObj.LastName = lastName;
+
+            if (ModelState.IsValid)
+            {
+                Author.addAuthor(_authotObj);
+            }
+            return View("authors", Author.getAuthorList().ToPagedList(1, 15));
+        }
     }
 }

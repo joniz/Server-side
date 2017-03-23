@@ -38,17 +38,10 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities())
             {
-                using(var transaction = db.Database.BeginTransaction())
-                {
-                    authorObj.Aid = (db.AUTHORs.ToList().Max(x => x.Aid) + 1);
+                
+                    
                     db.AUTHORs.Add(authorObj);
                     db.SaveChanges();
-                    transaction.Commit();
-                }
-
-
-
-                
             }
         } 
         public void Update(AUTHOR authorObj)

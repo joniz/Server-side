@@ -46,6 +46,10 @@ namespace service.Models
         {
             e_aID.Update(Mapper.Map<AUTHOR>(authObj));
         }
+        static public void addAuthor(Author authObj)
+        {
+            e_aID.Add(Mapper.Map<AUTHOR>(authObj));
+        }
         
     }
 }
