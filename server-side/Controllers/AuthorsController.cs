@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using service.Models;
 using PagedList;
 using PagedList.Mvc;
+using service.Security;
 
 namespace server_side.Controllers
 {
@@ -20,6 +21,7 @@ namespace server_side.Controllers
         {
             return View(Author.getAuthor(authorId));
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult showEditAuthor(int aID)
         {
             viewModel _viewModel = new viewModel();
@@ -29,6 +31,7 @@ namespace server_side.Controllers
             return View("editAuthor", _viewModel);
 
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult editAuthor(string firstName, string lastName, int birthYear, int aID)
         {
             Author _authObj = new Author();
@@ -45,10 +48,13 @@ namespace server_side.Controllers
 
 
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult showCreateAuthor()
         {
+            
             return View("createAuthor");
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult createAuthor(int birthYear, string firstName, string lastName)
         {
             Author _authotObj = new Author();

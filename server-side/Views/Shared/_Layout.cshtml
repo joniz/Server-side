@@ -5,7 +5,7 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
+@using service.Security
 
 <div class="jumbotron">
     <div class="jumbotrondiv">
@@ -31,9 +31,14 @@
                         <li role="presentation">@Html.ActionLink("Administrators", "administrator", "Administrator")</li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-
-                        <li role="presentation">@Html.ActionLink("Log in", "logIn", "logIn")</li>
-
+                        @if (SessionPersister.userName == null || SessionPersister.userName == string.Empty)
+                        {
+                        <li role="presentation">@Html.ActionLink("Log in", "viewLogIn", "LogIn")</li>
+                        }
+                        else
+                        {
+                            <li role="presentation">@Html.ActionLink("Log out", "logOut", "LogIn")</li>
+                        }
                     </ul>
                 </div>
             </div>

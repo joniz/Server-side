@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using service.Models;
 using PagedList;
 using PagedList.Mvc;
-
+using service.Security;
 namespace server_side.Controllers
 {
     public class BooksController : Controller
@@ -54,6 +54,7 @@ namespace server_side.Controllers
             
             
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult showCreateBook()
         {
 
@@ -63,6 +64,7 @@ namespace server_side.Controllers
             return View("createBook",_viewModel);
             
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
         {
             Books _bookObj = new Books();
@@ -87,6 +89,7 @@ namespace server_side.Controllers
             }
             return View("books", Books.getBookList().ToPagedList(1, 13));
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult showEditView(string isbn)
         {
             viewModel _viewModel = new viewModel();
@@ -96,6 +99,7 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         public ActionResult editBook(string title, List<int> aID, string publicationYear, string publicationInfo, int signId, int pages, string ISBN)
         {
 
