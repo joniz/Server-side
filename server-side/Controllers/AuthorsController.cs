@@ -13,10 +13,39 @@ namespace server_side.Controllers
     public class AuthorsController : Controller
     {
         // GET: Authors
-        public ActionResult authors(string search, int? page)
+        public ActionResult authors(int? page)
         {
             return View(Author.getAuthorList().ToPagedList(page ?? 1, 15));
         }
+        public ActionResult authorSearch(string search, int? page)
+        {
+            List<Author> _authorList = new List<Author>();
+            if (search != null)
+            {
+                foreach (var author in Author.getAuthorList())
+                {
+                    if (author.FirstName != null && author.LastName != null)
+                    {
+                        if (author.FirstName.Contains(search) || author.LastName.Contains(search))
+                        {
+                            _authorList.Add(author);
+                        }
+                    }
+                }
+                if(_authorList.Count == 0)
+                {
+
+                }else
+                {
+                    return View("authors", _authorList.ToPagedList(page ?? 1, 15));
+                }
+
+                
+            }
+            return View("authors", Author.getAuthorList().ToPagedList(page ?? 1, 15));
+        }
+
+            
         public ActionResult authorDetails(int authorId)
         {
             return View(Author.getAuthor(authorId));
