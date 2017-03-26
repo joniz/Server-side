@@ -21,6 +21,10 @@
                     {
                         <small>@books.Title</small>
                     }
+                    <div class="col-md-12">
+                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditAuthor", "Authors", new {aID = @Model.Aid})'></a>
+
+                    </div>
                 </div>
             </div>
         </div>

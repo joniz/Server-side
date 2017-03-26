@@ -1,28 +1,31 @@
-﻿
+﻿@model service.Models.Account
 @{
     ViewBag.Title = "administratorDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (service.Models.Administrator admin in service.Models.Administrator.getAdministratorList())
-{
-    if (admin._admId == @ViewBag.id)
-    {
+
+
+    
 
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@admin._admUserName</div>
+                <div class="panel-heading">@Model.Username</div>
                 <div class="panel-body">
 
-                    <small>Birth year: @admin._admId</small>
+                    <small>Rank: @Model.Rank</small>
                     
                     
+                    <div class="col-md-12">
+                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditView", "Administrator", new {userName = @Model.Username})'></a>
+
+                    </div>
                 </div>
             </div>
         </div>
 
 
-    }
+    
 
 
-}
+

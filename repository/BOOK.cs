@@ -29,6 +29,6 @@ namespace repository
     
         public CLASSIFICATION CLASSIFICATION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public  ICollection<AUTHOR> AUTHORs { get; set; }
+        public ICollection<AUTHOR> AUTHORs { get; set; }
     }
 }

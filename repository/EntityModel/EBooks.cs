@@ -12,7 +12,7 @@ namespace repository.EntityModel
     {
         public List<AUTHOR> getAllAuthors()
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
                 return db.AUTHORs.OrderBy(x => x.LastName).ToList();
             }
@@ -20,7 +20,7 @@ namespace repository.EntityModel
         public List<BOOK> List()
         {
 
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
 
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).OrderBy(x => x.Title).ToList();
@@ -28,7 +28,7 @@ namespace repository.EntityModel
         }
         public CLASSIFICATION getClassification(string isbn)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().CLASSIFICATION;
             }
@@ -39,7 +39,7 @@ namespace repository.EntityModel
 
         public List<AUTHOR> AuthorList(string isbn)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First().AUTHORs.ToList();
             }
@@ -49,7 +49,7 @@ namespace repository.EntityModel
         public BOOK Read(string isbn)
         {
 
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 return db.BOOKs.Include(x => x.AUTHORs).Include(x => x.CLASSIFICATION).Where(x => x.ISBN == isbn).First();
@@ -59,7 +59,7 @@ namespace repository.EntityModel
         }
         public void Add(BOOK bookObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
                 List<AUTHOR> auths = bookObj.AUTHORs.ToList();
 
@@ -84,7 +84,7 @@ namespace repository.EntityModel
         public void Update(BOOK bookObj)
         {
             
-            using ( var db = new dbtestEntities())
+            using ( var db = new swagbaseEntities1())
             {
                 BOOK dummyBook = db.BOOKs.Include("AUTHORs").FirstOrDefault(a => a.ISBN == bookObj.ISBN);
                 db.BOOKs.Attach(dummyBook);
@@ -120,7 +120,7 @@ namespace repository.EntityModel
         
         public void Delete(BOOK bookObj)
         {
-            using (var db = new dbtestEntities())
+            using (var db = new swagbaseEntities1())
             {
 
                 BOOK bISBN = db.BOOKs.Find(bookObj.ISBN);

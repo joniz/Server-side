@@ -20,7 +20,7 @@ namespace service.Security
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "LogIn", action = "viewLogIn" }));
             }else
             {
-                AccountModel am = new AccountModel();
+                Account am = new Account();
                 CustomPrincipal mp = new CustomPrincipal(am.find(SessionPersister.userName));
                 if (!mp.IsInRole(Roles))
                 {

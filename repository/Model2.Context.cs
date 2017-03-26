@@ -28,5 +28,6 @@ namespace repository
         public virtual DbSet<AUTHOR> AUTHORs { get; set; }
         public virtual DbSet<BOOK> BOOKs { get; set; }
         public virtual DbSet<CLASSIFICATION> CLASSIFICATIONs { get; set; }
+        public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
     }
 }

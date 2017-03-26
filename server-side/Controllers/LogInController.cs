@@ -18,14 +18,26 @@ namespace server_side.Controllers
         [HttpPost]
         public ActionResult logIn(Account user)
         {
-            AccountModel am = new AccountModel();
-            if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passWord) || am.logIn(user.userName, user.passWord) == null)
+            if (Account.logInAccount(user))
             {
-                ViewBag.Error = "Account is invalid";
+                SessionPersister.userName = user.Username;
+                return View("loggedInScreen");
+            }else
+            {
+                ViewBag.error = "Username or Password is wrong";
                 return View("logIn");
             }
-            SessionPersister.userName = user.userName;
-            return View("loggedInScreen");
+            
+            
+            
+            
+            //Account am = new Account();
+            //if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password) || am.logIn(user.Username, user.Password) == null)
+            //{
+            //    ViewBag.Error = "Account is invalid";
+            //    return View("logIn");
+            //}
+           
         }
         public ActionResult logOut()
         {

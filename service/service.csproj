@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\AutomapperConfig.cs" />
+    <Compile Include="Configuration\ToAccountProfile.cs" />
     <Compile Include="Configuration\ToAuthorProfile.cs" />
     <Compile Include="Configuration\ToBookProfile.cs" />
     <Compile Include="Configuration\ToClassificationProfile.cs" />
@@ -63,7 +64,6 @@
     <Compile Include="Mockups\authorMockup.cs" />
     <Compile Include="Mockups\booksMockup.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Books.cs" />

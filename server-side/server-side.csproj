@@ -272,6 +272,7 @@
     <Content Include="Views\Authors\createAuthor.cshtml" />
     <Content Include="Views\AccessDenied\acessDenied.cshtml" />
     <Content Include="Views\LogIn\loggedInScreen.cshtml" />
+    <Content Include="Views\Administrator\editAdministrator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

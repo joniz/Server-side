@@ -5,7 +5,7 @@
 }
 
 <h2>editAuthor</h2>
-@using (Html.BeginForm("editAuthor", "Authors", FormMethod.Get))
+@using (Html.BeginForm("editAuthor", "Authors", FormMethod.Post))
 {   @Html.Hidden("aID", Model.author.Aid);
     <form>
         <div class="form-group">
