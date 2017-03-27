@@ -4,11 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>editAuthor</h2>
-@if (ViewBag.serverError != null)
-{
+<h2>Edit Author</h2>
+
     <h1>@ViewBag.serverError</h1>
-}
+
 
 
 @using (Html.BeginForm("editAuthor", "Authors", FormMethod.Post))

@@ -118,9 +118,9 @@ namespace repository.EntityModel
                     _accObj.Rank = Convert.ToInt32(dar["Rank"]);
                 }
             }
-            catch (Exception aObj)
+            catch (Exception)
             {
-                throw aObj;
+                return false;
             }
             finally
             {
