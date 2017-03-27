@@ -88,6 +88,11 @@ namespace server_side.Controllers
                     Books.addBook(_bookObj);
                 }
             }
+            else
+            {
+
+                return View("createBook");
+            }
                 return View("books", Books.getBookList().ToPagedList(1, 13));
             
         }
@@ -100,9 +105,11 @@ namespace server_side.Controllers
 
             return View("editBook",_viewModel);
         }
-        public ActionResult editBook(string title, List<int> aID, string ISBN, string publicationYear, string publicationInfo, int signId, int pages)
+        public ActionResult editBook(string title, List<int> aID, string publicationYear, string publicationInfo, int signId, int pages, string ISBN)
         {
+
             Books _bookObj = new Books();
+            _bookObj.ISBN = ISBN;
             _bookObj.Title = title;
             List<Author> authorList = new List<Author>();
             foreach (int id in aID.ToList())
@@ -110,7 +117,6 @@ namespace server_side.Controllers
                 authorList.Add(Author.getAuthor(id));
             }
             _bookObj.AUTHORS = authorList;
-            _bookObj.ISBN = ISBN;
             _bookObj.PublicationYear = publicationYear;
             _bookObj.PublicationInfo = publicationInfo;
             _bookObj.SignId = signId;
@@ -122,6 +128,7 @@ namespace server_side.Controllers
             }
 
             return View("books", Books.getBookList().ToPagedList(1, 13));
+
         }
     }
 }

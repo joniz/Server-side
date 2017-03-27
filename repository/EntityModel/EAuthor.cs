@@ -11,7 +11,7 @@ namespace repository.EntityModel
     {
         public List<AUTHOR> List() {
 
-            using (var db = new swagbaseEntities())
+            using (var db = new swagbaseEntities1())
             {
 
                 return db.AUTHORs.Include(x => x.BOOKs).ToList();
@@ -63,6 +63,7 @@ namespace repository.EntityModel
         }
         public void Delete(AUTHOR authorObj)
         {
+
             using (var db = new swagbaseEntities1())
             {
 

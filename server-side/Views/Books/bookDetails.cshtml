@@ -22,7 +22,9 @@
                     <small>Authors: </small>
                     @foreach (var authors in Model.authorList)
                     {
-                    <small>@authors.FirstName, @authors.LastName</small>
+                        <a href='@Html.ActionLink("Link Text", "authorDetails", "Authors", new { authorId = Model.author.Aid }, null)'>author.FirstName author.LastName</a>
+
+                        
                     }
                     <div class="col-md-12">
                         <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditView", "Books", new {isbn = @Model.book.ISBN})'></a>

@@ -11,6 +11,7 @@ namespace repository.EntityModel
     {
         public List<CLASSIFICATION> List()
         {
+
             using (var db = new swagbaseEntities1())
             {
 
