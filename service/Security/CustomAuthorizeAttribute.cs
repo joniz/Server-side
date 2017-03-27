@@ -15,13 +15,13 @@ namespace service.Security
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (string.IsNullOrEmpty(SessionPersister.userName))
+            if (string.IsNullOrEmpty(SessionPersister.Username))
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "LogIn", action = "viewLogIn" }));
             }else
             {
                 Account am = new Account();
-                CustomPrincipal mp = new CustomPrincipal(am.find(SessionPersister.userName));
+                CustomPrincipal mp = new CustomPrincipal(am.find(SessionPersister.Username));
                 if (!mp.IsInRole(Roles))
                 {
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "AccessDenied", action = "Index" }));
