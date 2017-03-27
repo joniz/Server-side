@@ -1,4 +1,4 @@
-﻿@model service.Models.viewModel
+﻿@model service.Models.Author
 @{
     ViewBag.Title = "authorDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,18 +9,22 @@
 
         <div class="panel-group">
             <div class="panel panel-default">
-                <div class="panel-heading">@Model.author.FirstName @Model.author.LastName</div>
+                <div class="panel-heading">@Model.FirstName @Model.LastName</div>
                 <div class="panel-body">
 
-                    <small>Birth year: @Model.author.BirthYear</small>
+                    <small>Birth year: @Model.BirthYear</small>
                     <br />
-                    <small>unique ID: @Model.author.Aid</small>
+                    <small>unique ID: @Model.Aid</small>
                     <br />
                     <small>Books:</small>
                     @foreach (var books in Model.bookList)
                     {
                         <small>@books.Title</small>
                     }
+                    <div class="col-md-12">
+                        <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditAuthor", "Authors", new {aID = @Model.Aid})'></a>
+
+                    </div>
                 </div>
             </div>
         </div>

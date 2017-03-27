@@ -29,7 +29,8 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities1())
             {
-                return db.AUTHORs.Find(aID);
+                db.Configuration.LazyLoadingEnabled = false;
+                return db.AUTHORs.Include(x => x.BOOKs).Where(x => x.Aid ==  aID).First();
             }
 
         }
@@ -37,33 +38,38 @@ namespace repository.EntityModel
         {
             using (var db = new swagbaseEntities1())
             {
-                using(var transaction = db.Database.BeginTransaction())
-                {
-                    authorObj.Aid = (db.AUTHORs.ToList().Max(x => x.Aid) + 1);
+                
+                    
                     db.AUTHORs.Add(authorObj);
                     db.SaveChanges();
-                    transaction.Commit();
-                }
-
-
-
-                
             }
         } 
         public void Update(AUTHOR authorObj)
         {
             using (var db = new swagbaseEntities1())
             {
+                AUTHOR dummyAuthor = db.AUTHORs.Include("BOOKs").FirstOrDefault(a => a.Aid == authorObj.Aid);
 
-                db.AUTHORs.Attach(authorObj);
-                db.Entry(authorObj).State = EntityState.Modified;
+                db.AUTHORs.Attach(dummyAuthor);
+                dummyAuthor.BirthYear = authorObj.BirthYear;
+                dummyAuthor.FirstName = authorObj.FirstName;
+                dummyAuthor.LastName = authorObj.LastName;
+
+                //dummyAuthor.BOOKs.Clear();
+                //AUTHOR booksToDummy = authorObj.BOOKs.Select
+
+
+                db.Entry(dummyAuthor).State = EntityState.Modified;
                 db.SaveChanges();
             }
 
         }
         public void Delete(AUTHOR authorObj)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58b2def974865539ac3d3d801f74b18a99787f8c
             using (var db = new swagbaseEntities1())
             {
 

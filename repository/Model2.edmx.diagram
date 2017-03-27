@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="swagbaseModel.CLASSIFICATION" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="swagbaseModel.FK_BOOK_CLASSIFICATION" ManuallyRouted="false" />
         <AssociationConnector Association="swagbaseModel.BOOK_AUTHOR" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="swagbaseModel.ACCOUNT" Width="1.5" PointX="5.625" PointY="1.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,34 +1,35 @@
-﻿
+﻿@model service.Models.Account
 @{
     ViewBag.Title = "logIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 }
+
 
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Logga in</h3>
+                    <h3 class="panel-title">Login</h3>
                 </div>
                 <div class="panel-body">
+                    @using (Html.BeginForm("logIn", "LogIn", FormMethod.Post))
+                    {
+                        @ViewBag.Error
                     <form accept-charset="UTF-8" role="form">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Användarnamn" name="email" type="text">
+                                @Html.TextBoxFor(model => model.Username, new { @class="form-control", @placeholder = "Username", @name = "Username", @type = "text"})
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Lösenord" name="password" type="password" value="">
+                                @Html.TextBoxFor(model => model.Password, new {@class = "form-control", @placeholder = "Password", @name = "Password", @type = "password"})
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me"> Kom ihåg mig
-                                </label>
-                            </div>
+                          
                             <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                         </fieldset>
                     </form>
+                    }
                 </div>
             </div>
         </div>

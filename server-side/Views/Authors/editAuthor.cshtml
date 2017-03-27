@@ -1,0 +1,33 @@
+﻿@model service.Models.viewModel
+@{
+    ViewBag.Title = "editAuthor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>editAuthor</h2>
+@using (Html.BeginForm("editAuthor", "Authors", FormMethod.Post))
+{   @Html.Hidden("aID", Model.author.Aid);
+    <form>
+        <div class="form-group">
+            <label>Firstname: <small>@Model.author.FirstName</small></label>
+            <input type="text" class="form-control"  placeholder="Enter firstname" name="firstName">
+
+        </div>
+
+       
+        
+        <div class="form-group">
+            <label>Lastname: <small>@Model.author.LastName</small></label>
+            <input type="text" class ="form-control" name="lastName" placeholder="Enter Lastname">
+
+
+        </div>
+        <div class="form-group">
+            <label>Birth year: <small>@Model.author.BirthYear</small></label>
+            <input type="text" class="form-control" placeholder="Enter birth year" name="birthYear">
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
+

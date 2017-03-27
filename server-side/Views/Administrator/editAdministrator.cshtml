@@ -1,0 +1,24 @@
+﻿@model service.Models.Account
+@{
+    ViewBag.Title = "editAdministrator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("editAdministrator", "Administrator", FormMethod.Post))
+{
+@Html.Hidden("Username", Model.Username);
+<h2>Edit administrator</h2>
+<div class="form-group">
+    <label name="ISBN">Account name: <small>@Model.Username </small></label>
+</div>
+<div class="form-group">
+    <label name="ISBN">new password:</label>
+    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="Password">
+</div>
+<div class="form-group">
+    <label name="ISBN">Repeat password:</label>
+    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter text" name="repeatedPassWord">
+</div>
+    
+<button type="submit" class="btn btn-primary">Submit</button>
+@ViewBag.error
+}

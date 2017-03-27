@@ -20,7 +20,10 @@ namespace repository.EntityModel
         }
         public CLASSIFICATION Read(int signId)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58b2def974865539ac3d3d801f74b18a99787f8c
             using (var db = new swagbaseEntities1())
             {
                 return db.CLASSIFICATIONs.Find(signId);
@@ -37,7 +40,10 @@ namespace repository.EntityModel
         }
         public void Update(CLASSIFICATION classiObj)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58b2def974865539ac3d3d801f74b18a99787f8c
             using (var db = new swagbaseEntities1())
             {
 

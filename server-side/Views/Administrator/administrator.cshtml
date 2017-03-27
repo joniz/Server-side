@@ -1,4 +1,4 @@
-﻿
+﻿@model List<service.Models.Account>
 @{
     ViewBag.Title = "administrator";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,13 +43,13 @@
 
 
         <tbody>
-            @foreach (service.Models.Administrator admin in service.Models.Administrator.getAdministratorList())
+            @foreach (var admins in Model)
             {
 
 
-                <tr  onclick="document.location = '@Url.Action("administratorDetails", "Administrator", new {admId = @admin._admId})'">
-                    <td>@admin._admUserName</td>
-                    <td>@admin._admId</td>
+                <tr  onclick="document.location = '@Url.Action("administratorDetails", "Administrator", new {userName = @admins.Username})'">
+                    <td>@admins.Username</td>
+                    <td>@admins.Rank</td>
                     
 
                 </tr>

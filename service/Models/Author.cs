@@ -24,8 +24,8 @@ namespace service.Models
        public string LastName { get; set; }
        [Required, RegularExpression("^[0-9]{4}")]
        public int BirthYear { get; set; }
-       public Classification CLASSIFICATION { get; set; }
-       public List<Books> BOOK { get; set; }
+       
+       public List<Books> bookList { get; set; }
 
         static private EAuthor e_aID = new EAuthor();
 
@@ -41,6 +41,14 @@ namespace service.Models
         static public List<Books> getBooksFromAuthor(int aId)
         {
             return Mapper.Map<List<BOOK>, List<Books>>(e_aID.getBookList(aId));
+        }
+        static public void editAuthor(Author authObj)
+        {
+            e_aID.Update(Mapper.Map<AUTHOR>(authObj));
+        }
+        static public void addAuthor(Author authObj)
+        {
+            e_aID.Add(Mapper.Map<AUTHOR>(authObj));
         }
         
     }

@@ -21,6 +21,8 @@ namespace service.Configuration
                 cfg.AddProfile(new ToClassificationProfile());
                 cfg.AddProfile(new FromClassificationProfile());
                 //cfg.AddProfile(new FromEmployeeProfile());
+                cfg.AddProfile(new ToAccountProfile());
+                cfg.AddProfile(new FromAccountProfile());
             });
         }
     }

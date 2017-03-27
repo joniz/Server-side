@@ -203,6 +203,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccessDeniedController.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
@@ -267,6 +268,11 @@
     <Content Include="Views\Administrator\administratorDetails.cshtml" />
     <Content Include="Views\Books\createBook.cshtml" />
     <Content Include="Views\Books\editBook.cshtml" />
+    <Content Include="Views\Authors\editAuthor.cshtml" />
+    <Content Include="Views\Authors\createAuthor.cshtml" />
+    <Content Include="Views\AccessDenied\acessDenied.cshtml" />
+    <Content Include="Views\LogIn\loggedInScreen.cshtml" />
+    <Content Include="Views\Administrator\editAdministrator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

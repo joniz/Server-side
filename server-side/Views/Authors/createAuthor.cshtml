@@ -1,0 +1,38 @@
+﻿@model service.Models.Author
+@{
+    ViewBag.Title = "createAuthor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@using (Html.BeginForm("createAuthor", "Authors", FormMethod.Get))
+{   
+    <form>
+        <div class="form-group">
+            <label>Firstname</label>
+            <input type="text" class="form-control" placeholder="Enter firstname" name="firstName">
+
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Lastname:</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Enter Lastname">
+
+
+        </div>
+        <div class="form-group">
+            <label>Birth year:</label>
+            <input type="text" class="form-control" placeholder="Enter birth year" name="birthYear">
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
+
+
+
