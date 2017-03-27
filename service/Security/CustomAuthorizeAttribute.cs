@@ -21,7 +21,7 @@ namespace service.Security
             }else
             {
                 Account am = new Account();
-                CustomPrincipal mp = new CustomPrincipal(am.find(SessionPersister.Username));
+                CustomPrincipal mp = new CustomPrincipal(Account.getAccount(SessionPersister.Username));
                 if (!mp.IsInRole(Roles))
                 {
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "AccessDenied", action = "Index" }));

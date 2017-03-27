@@ -3,7 +3,10 @@
     ViewBag.Title = "authorDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (ViewBag.serverError != null)
+{
+    <h1>@ViewBag.serverError</h1>
+}
 
     
 

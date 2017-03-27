@@ -5,8 +5,16 @@
 }
 
 <h2>editAuthor</h2>
+@if (ViewBag.serverError != null)
+{
+    <h1>@ViewBag.serverError</h1>
+}
+
+
 @using (Html.BeginForm("editAuthor", "Authors", FormMethod.Post))
 {   @Html.Hidden("aID", Model.author.Aid);
+
+    
     <form>
         <div class="form-group">
             <label>Firstname: <small>@Model.author.FirstName</small></label>

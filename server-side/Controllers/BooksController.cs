@@ -32,8 +32,15 @@ namespace server_side.Controllers
                     {
                         _bookList.Add(book);
                     }
+                    
+                   
                 }
-                return View("books", _bookList.ToPagedList(page ?? 1, 15));
+                if (_bookList.Count == 0)
+                {
+                    ViewBag.error = "No match was found";
+                    return View("books", _bookList.ToPagedList(page ?? 1, 15));
+                }
+                else return View("books", _bookList.ToPagedList(page ?? 1, 15));
             }
             return View("books", Books.getBookList().ToPagedList(page ?? 1, 15));
 

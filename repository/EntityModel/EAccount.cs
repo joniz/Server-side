@@ -12,7 +12,7 @@ namespace repository.EntityModel
     {
         public List<ACCOUNT> getAccountList()
         {
-            
+
             List<ACCOUNT> _accountList = new List<ACCOUNT>();
             string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
             SqlConnection con = new SqlConnection(_connectionString);
@@ -21,7 +21,7 @@ namespace repository.EntityModel
             {
                 con.Open();
                 SqlDataReader dar = cmd.ExecuteReader();
-                if(dar != null)
+                if (dar != null)
                 {
                     while (dar.Read())
                     {
@@ -30,12 +30,12 @@ namespace repository.EntityModel
                         _accObj.Password = dar["Password"] as string;
                         _accObj.Rank = Convert.ToInt32(dar["Rank"]);
                         _accountList.Add(_accObj);
-                            
-                    }   
+
+                    }
                 }
 
             }
-            
+
             catch (Exception aObj)
             {
                 throw aObj;
@@ -77,7 +77,7 @@ namespace repository.EntityModel
         }
         public void editAccount(ACCOUNT accObj)
         {
-            
+
             string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
             SqlConnection con = new SqlConnection(_connectionString);
             SqlCommand cmd = new SqlCommand("UPDATE ACCOUNT SET Password = '" + accObj.Password + "' WHERE Username = '" + accObj.Username + "';", con);
@@ -87,7 +87,7 @@ namespace repository.EntityModel
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception aObj)
+            catch (Exception aObj)
             {
                 throw aObj;
             }
@@ -99,8 +99,8 @@ namespace repository.EntityModel
         }
         public bool logInAccount(ACCOUNT accObj)
         {
-           
-            
+
+
             ACCOUNT _accObj = new ACCOUNT();
             string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
             SqlConnection con = new SqlConnection(_connectionString);
@@ -117,18 +117,18 @@ namespace repository.EntityModel
                     _accObj.Rank = Convert.ToInt32(dar["Rank"]);
                 }
             }
-            catch(Exception aObj) 
+            catch (Exception aObj)
             {
                 throw aObj;
             }
             finally
             {
-               
+
                 if (con != null)
                 {
                     con.Close();
                 }
-                
+
             }
             if (_accObj.Username != null && _accObj.Password != null)
             {
@@ -137,8 +137,34 @@ namespace repository.EntityModel
             }
             else return false;
         }
+        public bool checkDbCOnn()
+        {
+            bool okConn = false;
+            ACCOUNT _accObj = new ACCOUNT();
+            string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
+            SqlConnection con = new SqlConnection(_connectionString);
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT WHERE Username = '" + accObj.Username.ToString() + "';", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT;", con);
+            try
+            {
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    okConn = true;
+                }
+            }
+           
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
 
+            }
+            return okConn;
 
-
+        }
     }
 }

@@ -4,16 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using service.Models;
+using service.Security;
 
 namespace server_side.Controllers
 {
     public class AdministratorController : Controller
     {
         // GET: Administrator
+        [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult administrator()
         {
             return View("Administrator", Account.getAccountList());
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult administratorDetails(string userName)
         {
             
@@ -21,12 +24,14 @@ namespace server_side.Controllers
             
 
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult showEditView(string userName)
         {
 
             return View("editAdministrator", Account.getAccount(userName));
 
         }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult editAdministrator(string Password, string Username, string repeatedPassWord)
         {
             if (Password.Equals(repeatedPassWord))
