@@ -11,10 +11,10 @@ namespace service.Security
     public class CustomPrincipal : IPrincipal
     {
         private Account Account;
-        public CustomPrincipal(Account userName)
+        public CustomPrincipal(Account Username)
         {
-            this.Account = userName;
-            this.Identity = new GenericIdentity(userName.Username);
+            this.Account = Username;
+            this.Identity = new GenericIdentity(Username.Username);
         }
 
         public IIdentity Identity{ get; set; }
@@ -22,7 +22,17 @@ namespace service.Security
         public bool IsInRole(string role)
         {
             var roles = role.Split(new char[] { ',' });
-            return roles.Any(r => this.Account.Rank.Contains(r));
+            foreach(var roli in roles)
+            {
+                if(roli == "megaAdmin" && this.Account.Rank > 1)
+                {
+                    return true;
+                }else if (roli == "admin" && this.Account.Rank == 1)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

@@ -83,7 +83,7 @@ namespace server_side.Controllers
             
             return View("createAuthor");
         }
-        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
+        [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult createAuthor(int birthYear, string firstName, string lastName)
         {
             Author _authotObj = new Author();

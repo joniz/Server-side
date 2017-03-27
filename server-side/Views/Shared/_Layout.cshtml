@@ -31,7 +31,7 @@
                         <li role="presentation">@Html.ActionLink("Administrators", "administrator", "Administrator")</li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (SessionPersister.userName == null || SessionPersister.userName == string.Empty)
+                        @if (SessionPersister.Username == null || SessionPersister.Username == string.Empty)
                         {
                         <li role="presentation">@Html.ActionLink("Log in", "viewLogIn", "LogIn")</li>
                         }

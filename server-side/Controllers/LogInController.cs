@@ -20,7 +20,7 @@ namespace server_side.Controllers
         {
             if (Account.logInAccount(user))
             {
-                SessionPersister.userName = user.Username;
+                SessionPersister.Username = user.Username;
                 return View("loggedInScreen");
             }else
             {
@@ -41,7 +41,7 @@ namespace server_side.Controllers
         }
         public ActionResult logOut()
         {
-            SessionPersister.userName = string.Empty;
+            SessionPersister.Username = string.Empty;
             return RedirectToAction("viewLogin");
         }
 

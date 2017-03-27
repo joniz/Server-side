@@ -19,7 +19,7 @@ namespace service.Models
         public string Username { get; set; }
         [Display(Name = "passWord")]
         public string Password { get; set; }
-        public string Rank { get; set; }
+        public int Rank { get; set; }
         public string Salt { get; set; }
 
         static private EAccount e_Account = new EAccount();

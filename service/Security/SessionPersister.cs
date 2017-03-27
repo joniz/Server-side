@@ -10,8 +10,8 @@ namespace service.Security
 {
     public static class SessionPersister
     {
-        static string userNameSessionVar = "userName";
-        public static string userName
+        static string userNameSessionVar = "Username";
+        public static string Username
         {
             get
             {

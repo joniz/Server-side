@@ -99,29 +99,43 @@ namespace repository.EntityModel
         }
         public bool logInAccount(ACCOUNT accObj)
         {
-            int affectedRows = 0;
-            bool logInResponse = false;
+           
+            
+            ACCOUNT _accObj = new ACCOUNT();
             string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
             SqlConnection con = new SqlConnection(_connectionString);
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT WHERE Username = '" + accObj.Username.ToString() + "';", con);
             SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT WHERE Username = '" + accObj.Username + "' AND Password = '" + accObj.Password + "';", con);
             try
             {
-              con.Open();
-              affectedRows = cmd.ExecuteNonQuery();
-            }catch(Exception aObj)
+                con.Open();
+                SqlDataReader dar = cmd.ExecuteReader();
+                if (dar.Read())
+                {
+                    _accObj.Username = dar["Username"] as string;
+                    _accObj.Password = dar["Password"] as string;
+                    _accObj.Rank = Convert.ToInt32(dar["Rank"]);
+                }
+            }
+            catch(Exception aObj) 
             {
                 throw aObj;
             }
             finally
             {
-                if(affectedRows == 1)
-                {
-                    logInResponse = true;
-                }
+               
                 if (con != null)
+                {
                     con.Close();
+                }
+                
             }
-            return logInResponse;
+            if (_accObj.Username != null && _accObj.Password != null)
+            {
+                return true;
+
+            }
+            else return false;
         }
 
 
