@@ -22,7 +22,7 @@ namespace server_side.Controllers
             }
             List<Author> _emptyList = new List<Author>();
             ViewBag.serverError = "No connection to database";
-            return View("authors", _emptyList);
+            return View("authors", _emptyList.ToPagedList(page ?? 1, 15));
 
             
         }

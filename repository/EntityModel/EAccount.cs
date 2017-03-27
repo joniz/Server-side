@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using repository.Repositories;
+using System.Data.Common;
 namespace repository.EntityModel
 {
     public class EAccount
@@ -137,33 +138,23 @@ namespace repository.EntityModel
             }
             else return false;
         }
+
         public bool checkDbCOnn()
         {
-            bool okConn = false;
-            ACCOUNT _accObj = new ACCOUNT();
-            string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
-            SqlConnection con = new SqlConnection(_connectionString);
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT WHERE Username = '" + accObj.Username.ToString() + "';", con);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM ACCOUNT;", con);
-            try
+            
+            using (var db = new swagbaseEntities())
             {
-                con.Open();
-                SqlDataReader dar = cmd.ExecuteReader();
-                if (dar.Read())
+                try
                 {
-                    okConn = true;
+                   DbConnection conn = db.Database.Connection;
+                   conn.Open();
+                   return true;
+                }
+                catch
+                {
+                    return false;
                 }
             }
-           
-            finally
-            {
-                if (con != null)
-                {
-                    con.Close();
-                }
-
-            }
-            return okConn;
 
         }
     }
