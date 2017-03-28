@@ -92,9 +92,8 @@ namespace server_side.Controllers
             ViewBag.serverError = "No connection to database";
             return View("authors", _viewModel);
         }
-        
+
         [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
-<<<<<<< HEAD:Server-side-master/server-side/Controllers/AuthorsController.cs
         [HttpPost]
         public ActionResult editAuthor(string firstName, string lastName, int birthYear, int aID)
         {
@@ -125,7 +124,7 @@ namespace server_side.Controllers
                 return View("editAuthor", vmodel);
 
             }
-=======
+        }
         public ActionResult editAuthor(string firstName, string lastName, int? birthYear, int? aID)
         {
             if (Account.testConn())
@@ -139,7 +138,6 @@ namespace server_side.Controllers
 
                 if (ModelState.IsValid) //Validator.TryValidateObject(_authObj, context, result, true))
                 {
->>>>>>> c98e5d325d727a58241ea68df6dddc1917f85d52:server-side/Controllers/AuthorsController.cs
 
                     Author.editAuthor(_authObj);
                 }
@@ -157,16 +155,12 @@ namespace server_side.Controllers
         [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult showCreateAuthor()
         {
-<<<<<<< HEAD:Server-side-master/server-side/Controllers/AuthorsController.cs
-            return View("createAuthor");
-=======
             if (Account.testConn())
             {
                 return View("createAuthor");
             }
             ViewBag.serverError = "No connection to database";
             return View("authors");
->>>>>>> c98e5d325d727a58241ea68df6dddc1917f85d52:server-side/Controllers/AuthorsController.cs
         }
         [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult createAuthor(int birthYear, string firstName, string lastName)

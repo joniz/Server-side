@@ -157,5 +157,30 @@ namespace repository.EntityModel
             }
 
         }
+        public void deleteAccount(string Username)
+        {
+            string _connectionString = DataSource.getConnectionString("swagbaseCoolString");
+            SqlConnection con = new SqlConnection(_connectionString);
+            SqlCommand cmd = new SqlCommand("DELETE FROM ACCOUNT WHERE Username = '" + Username + "';", con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception aObj)
+            {
+                throw aObj;
+
+            }
+            finally
+            {
+                if(con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+
     }
 }
