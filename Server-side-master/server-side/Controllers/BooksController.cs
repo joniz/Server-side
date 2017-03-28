@@ -81,14 +81,14 @@ namespace server_side.Controllers
             string number = @"([0-9])+";
             string text = @"([A-Za-zÅÄÖåäö0-9\.,!: ])+";
 
-            Match tResult = Regex.Match(book.Title, text);
-            Match iResult = Regex.Match(book.ISBN, number);
-            Match sResult = Regex.Match(book.SignId.ToString(), number);
-            Match yResult = Regex.Match(book.PublicationYear, number);
-            Match pResult = Regex.Match(book.pages.ToString(), number);
-            Match inResult = Regex.Match(book.PublicationInfo, text);
+            Match titleResult = Regex.Match(book.Title, text);
+            Match isbnResult = Regex.Match(book.ISBN, number);
+            Match signResult = Regex.Match(book.SignId.ToString(), number);
+            Match yearResult = Regex.Match(book.PublicationYear, number);
+            Match pageResult = Regex.Match(book.pages.ToString(), number);
+            Match infoResult = Regex.Match(book.PublicationInfo, text);
 
-            if (tResult.Success && iResult.Success && sResult.Success && yResult.Success && pResult.Success && inResult.Success && (book.ISBN.Length > 6 && book.ISBN.Length < 16))
+            if (titleResult.Success && isbnResult.Success && signResult.Success && yearResult.Success && pageResult.Success && infoResult.Success && (book.ISBN.Length > 6 && book.ISBN.Length < 16))
             {
                 return true;
             }
@@ -191,7 +191,6 @@ namespace server_side.Controllers
                 _bookObj.CLASSIFICATION = Classification.getClassification(signId ?? default(int));
 
             }
-            ////////// 
             if (checkInput(_bookObj))
             {
                 if (ModelState.IsValid)
