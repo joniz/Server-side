@@ -119,16 +119,18 @@ namespace server_side.Controllers
         [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult showCreateAuthor()
         {
+            List<Author> _emptyList = new List<Author>();
             if (Account.testConn())
             {
                 return View("createAuthor");
             }
             ViewBag.serverError = "No connection to database";
-            return View("authors");
+            return View("authors", _emptyList);
         }
         [CustomAuthorizeAttribut(Roles = "megaAdmin")]
         public ActionResult createAuthor(int birthYear, string firstName, string lastName)
         {
+            List<Author> _emptyList = new List<Author>();
             if (Account.testConn())
             {
                 Author _authotObj = new Author();
@@ -143,7 +145,7 @@ namespace server_side.Controllers
                 return View("authors", Author.getAuthorList().ToPagedList(1, 15));
             }
             ViewBag.serverError = "No connection to database";
-            return View("authors");
+            return View("authors", _emptyList);
         }
     }
 }

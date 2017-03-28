@@ -3,7 +3,7 @@
     ViewBag.Title = "administratorDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using service.Security
 
 
     
@@ -18,7 +18,10 @@
                     
                     <div class="col-md-12">
                         <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("showEditView", "Administrator", new {userName = @Model.Username})'></a>
-                        <a id="deleteButton" class="glyphicon glyphicon-trash btn btn-sm btn-default pull-right" href='@Url.Action("deleteAccount", "Administrator", new {Username = Model.Username})'></a>
+                        @if (SessionPersister.Username != Model.Username)
+                        {
+                        <a id="deleteButton" class="glyphicon glyphicon-trash btn btn-sm btn-default pull-right" href='@Url.Action("deleteAccount", "Administrator", new { Username = Model.Username })'></a>
+                        }
                     </div>
                 </div>
             </div>
