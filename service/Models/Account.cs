@@ -55,6 +55,10 @@ namespace service.Models
         {
             return e_Account.checkDbCOnn();
         }
+        static public void deleteAccount(string Username)
+        {
+            e_Account.deleteAccount(Username);
+        }
 
 
 

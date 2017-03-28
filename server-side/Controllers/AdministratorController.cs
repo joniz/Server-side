@@ -48,5 +48,11 @@ namespace server_side.Controllers
                 return View("editAdministrator", Account.getAccount(Username));
             }
         }
+        public ActionResult deleteAccount(string Username)
+        {
+            Account.deleteAccount(Username);
+
+            return View("administrator", Account.getAccountList());
+        }
     }
 }
