@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+    <h1>@ViewBag.serverError</h1>
+
 
     
 
@@ -19,8 +21,12 @@
                     <small>Books:</small>
                     @foreach (var books in Model.bookList)
                     {
-                        <small>@books.Title</small>
+                        <a href='@Url.Action("bookDetails", "Books", new {isbn = books.ISBN})'>@books.Title |</a>
                     }
+                  
+                    
+
+
                     <div class="col-md-12">
                         <a id="editButton" class="glyphicon glyphicon-cog btn btn-sm btn-default pull-right" href='@Url.Action("editAuthor", "Authors", new {aID = @Model.Aid})'></a>
 

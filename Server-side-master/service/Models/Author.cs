@@ -8,6 +8,7 @@ using repository;
 using AutoMapper;
 using repository.EntityModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace service.Models
 {
@@ -16,13 +17,18 @@ namespace service.Models
 
      
 
+<<<<<<< HEAD:Server-side-master/service/Models/Author.cs
        public int Aid { get; set; }
+=======
+       [Required, RegularExpression("^[0-9]"), StringLength(15, MinimumLength = 1)]
+       public int? Aid { get; set; }
+>>>>>>> c98e5d325d727a58241ea68df6dddc1917f85d52:service/Models/Author.cs
        [Required, StringLength(30, MinimumLength = 2)]
        public string FirstName { get; set; }
        [Required, StringLength(30, MinimumLength = 2)]
        public string LastName { get; set; }
        [Required, RegularExpression("^[0-9]{4}")]
-       public int BirthYear { get; set; }
+       public int? BirthYear { get; set; }
        
        public List<Books> bookList { get; set; }
 
@@ -50,5 +56,6 @@ namespace service.Models
             e_aID.Add(Mapper.Map<AUTHOR>(authObj));
         }
         
+
     }
 }

@@ -28,7 +28,10 @@
                         @*<li role="presentation">@Html.ActionLink("Home", "home", "home")</li>*@
                         <li role="presentation">@Html.ActionLink("Books", "books", "Books")</li>
                         <li role="presentation">@Html.ActionLink("Authors", "authors", "Authors")</li>
+                        @if (!string.IsNullOrEmpty(SessionPersister.Username))
+                        {
                         <li role="presentation">@Html.ActionLink("Administrators", "administrator", "Administrator")</li>
+                        }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (SessionPersister.Username == null || SessionPersister.Username == string.Empty)

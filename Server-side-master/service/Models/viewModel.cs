@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace service.Models
 {
@@ -15,6 +16,7 @@ namespace service.Models
         public Classification classifications { get; set; }
         public Administrator administrator {get; set; }
         public List<Classification> classificationList { get; set; }
+        public List<ValidationResult> valResultList { get; set; }
         
 
 

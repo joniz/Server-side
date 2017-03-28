@@ -18,15 +18,22 @@ namespace server_side.Controllers
         [HttpPost]
         public ActionResult logIn(Account user)
         {
-            if (Account.logInAccount(user))
+            if (Account.testConn())
             {
-                SessionPersister.Username = user.Username;
-                return View("loggedInScreen");
-            }else
-            {
-                ViewBag.error = "Username or Password is wrong";
-                return View("logIn");
+                if (Account.logInAccount(user))
+                {
+                    SessionPersister.Username = user.Username;
+                    return View("loggedInScreen");
+                }
+                else
+                {
+                    ViewBag.error = "Username or Password is wrong";
+                    return View("logIn");
+                }
             }
+            
+             ViewBag.error = "No connection to database";
+             return View("logIn");
             
             
             

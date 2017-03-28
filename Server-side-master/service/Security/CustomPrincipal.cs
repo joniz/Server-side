@@ -10,11 +10,11 @@ namespace service.Security
 {
     public class CustomPrincipal : IPrincipal
     {
-        private Account Account;
-        public CustomPrincipal(Account Username)
+        private Account account;
+        public CustomPrincipal(Account account)
         {
-            this.Account = Username;
-            this.Identity = new GenericIdentity(Username.Username);
+            this.account = account;
+            this.Identity = new GenericIdentity(account.Username);
         }
 
         public IIdentity Identity{ get; set; }
@@ -24,10 +24,10 @@ namespace service.Security
             var roles = role.Split(new char[] { ',' });
             foreach(var roli in roles)
             {
-                if(roli == "megaAdmin" && this.Account.Rank > 1)
+                if(roli == "megaAdmin" && this.account.Rank > 1)
                 {
                     return true;
-                }else if (roli == "admin" && this.Account.Rank == 1)
+                }else if (roli == "admin" && this.account.Rank == 1)
                 {
                     return true;
                 }

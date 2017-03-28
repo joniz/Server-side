@@ -6,6 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<<<<<<< HEAD:Server-side-master/server-side/Views/Books/createBook.cshtml
 <h2>Create Book</h2>
 @if (ViewBag.ErrorDan != null)
 {
@@ -16,6 +17,12 @@
     <h2 class="alert alert-warning" role="alert">@ViewBag.ErrorWar</h2>
 }
 @using (Html.BeginForm("createBook", "Books", FormMethod.Post))
+=======
+    <h1>@ViewBag.serverError</h1>
+
+
+@using (Html.BeginForm("createBook", "Books", FormMethod.Get))
+>>>>>>> c98e5d325d727a58241ea68df6dddc1917f85d52:server-side/Views/Books/createBook.cshtml
 {
 <form>
     <div class="form-group">
@@ -27,7 +34,11 @@
     <label for="sel1">Select author:</label>
 
     <div id="authorDiv">
+<<<<<<< HEAD:Server-side-master/server-side/Views/Books/createBook.cshtml
         <select id ="authorSelect" class="form-control" name="aID">
+=======
+        <select class="form-control" id="authorSelect" name="aID">
+>>>>>>> c98e5d325d727a58241ea68df6dddc1917f85d52:server-side/Views/Books/createBook.cshtml
             @foreach (var author in Model.authorList)
             {
 

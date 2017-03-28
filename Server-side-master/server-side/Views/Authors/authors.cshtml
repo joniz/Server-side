@@ -28,9 +28,16 @@
 
         </div>
     }</div>
+  
+    
+        <h1>@ViewBag.serverError</h1>
     
     <!-- Table -->
+    
+    @if (Model.Count != 0)
+    {
     <table  class="table table-hover">
+    
         <thead>
             <tr>
 
@@ -39,26 +46,38 @@
                 <th>Födelseår</th>
                 
              </tr>
+        
+
         </thead>
 
 
-
         <tbody>
-            @foreach (var author in Model)
-            {
+          
+           @foreach (var author in Model)
+           {
 
 
-                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new {authorId = @author.Aid})'">
+                <tr  onclick="document.location = '@Url.Action("authorDetails", "Authors", new { authorId = @author.Aid })'">
                     <td>@author.FirstName</td>
                     <td>@author.LastName</td>
                     <td>@author.BirthYear</td>
                     
                 </tr>
-            }
+           }
+          
+          
+
+
+
+
         </tbody>
 
     </table>
+    }
+    else
+    { <h1>@ViewBag.error</h1> }
 </div>
+    
 <div class="col-md-12">
     <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("showCreateAuthor", "Authors")'></a>
     @Html.PagedListPager(Model, page => Url.Action("authors", new { page, Search = Request.QueryString["Search"] }))

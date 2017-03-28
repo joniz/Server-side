@@ -31,8 +31,14 @@
 
         </div>
     }</div>
+
+       
+<h1>@ViewBag.serverError</h1>
+        
     <!-- Table -->
-    <table class="table table-hover">
+    @if (Model.Count != 0)
+    {
+        <table class="table table-hover">
         <thead>
             <tr>
                 <th>Title</th>
@@ -48,7 +54,7 @@
                 @foreach (var books in Model)
                 {
 
-                    <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new {isbn = @books.ISBN})'">
+                    <tr class="clickable-row" onclick="document.location = '@Url.Action("bookDetails", "Books", new { isbn = @books.ISBN })'">
                         <td>@books.Title</td>      
                         <td>@books.CLASSIFICATION.Signum</td>
                         <td>@books.pages</td>
@@ -56,7 +62,7 @@
                         <td>@books.ISBN</td>
 
                     </tr>
-                    
+
                 }
            
 
@@ -64,7 +70,8 @@
 
 
     </table>
-       
+    }else {<h1>@ViewBag.error</h1> }
+
 </div>
 <div class="col-md-12">
     <a id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" href='@Url.Action("createBook", "Books")'></a>

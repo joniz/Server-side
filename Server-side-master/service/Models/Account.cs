@@ -51,7 +51,10 @@ namespace service.Models
         {
             return e_Account.logInAccount(Mapper.Map<ACCOUNT>(accObj));
         }
-       
+        static public bool testConn()
+        {
+            return e_Account.checkDbCOnn();
+        }
 
 
 
