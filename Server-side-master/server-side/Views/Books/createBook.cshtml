@@ -1,0 +1,83 @@
+﻿
+@model service.Models.viewModel
+
+@{
+    ViewBag.Title = "createBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Book</h2>
+@if (ViewBag.ErrorDan != null)
+{
+<h2 class="alert alert-danger" role="alert">@ViewBag.ErrorDan</h2>
+}
+@if (ViewBag.ErrorWar != null)
+{
+    <h2 class="alert alert-warning" role="alert">@ViewBag.ErrorWar</h2>
+}
+@using (Html.BeginForm("createBook", "Books", FormMethod.Post))
+{
+<form>
+    <div class="form-group">
+        <label for="usr">Title:</label>
+        <input type="text" class="form-control" id="usr" name="title">
+    </div>
+<div class="form-group">
+
+    <label for="sel1">Select author:</label>
+
+    <div id="authorDiv">
+        <select id ="authorSelect" class="form-control" name="aID">
+            @foreach (var author in Model.authorList)
+            {
+
+                <option value="@author.Aid">@author.FirstName @author.LastName</option>
+            }
+        </select>
+    </div>
+
+    <button id="addDiv" class="glyphicon glyphicon-plus" type="button"></button>
+</div>
+
+
+
+    <div class="form-group">
+        <label for="usr">Publication year:</label>
+        <input type="text" class="form-control" id="" name="publicationYear">
+    </div>
+    <div class="form-group">
+        <label for="usr">Sign Id:</label>
+        <select class="form-control" name="signId">
+            @foreach (var classi in Model.classificationList)
+            {
+                <option value="@classi.SignId">@classi.Signum</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="usr">Isbn:</label>
+        <input type="text" class="form-control" id="usr" name="isbn">
+    </div>
+    <div class="form-group">
+        <label for="usr">Paged:</label>
+        <input type="text" class="form-control" id="usr" name="pages">
+    </div>
+    <div class="form-group">
+        <label for="comment">Publication info</label>
+        <textarea class="form-control" rows="5" id="comment" name="publicationInfo"></textarea>
+    </div>
+    <div class="col-md-12">
+        <button id="createButton" class="glyphicon glyphicon-plus btn btn-sm btn-default pull-right" type="submit">Add</button>
+    </div>
+</form>
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $("#addDiv").click(function () {
+            $('#authorSelect').clone().appendTo("#authorDiv");
+        });
+    });
+</script>
