@@ -71,10 +71,15 @@ namespace server_side.Controllers
             ViewBag.serverError = "No connection to database";
             return View("authors");
         }
-        public bool checkInput(string firstName, string lastName, int birthYear)
-        {
-
-        }
+        //public bool checkInput(string firstName, string lastName, int? birthYear)
+        //{
+        //    if(firstName == null || lastName == null || birthYear == null)
+        //    {
+        //        return false;
+        //    }
+            
+            
+        //}
         [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
         [HttpGet]
         public ActionResult editAuthor(int aID)
@@ -103,8 +108,7 @@ namespace server_side.Controllers
             _authObj.BirthYear = birthYear;
             _authObj.Aid = aID;
             /////
-            if (checkInput(_authObj))
-            {
+            if (true) { 
                 Author.editAuthor(_authObj);
                 return View("authors", Author.getAuthorList().ToPagedList(1, 15));
             }
@@ -134,7 +138,7 @@ namespace server_side.Controllers
                 _authObj.FirstName = firstName;
                 _authObj.LastName = lastName;
                 _authObj.BirthYear = (int?)birthYear;
-                _authObj.Aid = (int?)aID;
+                _authObj.Aid = aID ?? default(int);
 
                 if (ModelState.IsValid) //Validator.TryValidateObject(_authObj, context, result, true))
                 {

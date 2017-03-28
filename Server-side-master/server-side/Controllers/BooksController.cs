@@ -7,6 +7,8 @@ using service.Models;
 using PagedList;
 using PagedList.Mvc;
 using service.Security;
+using System.Text.RegularExpressions;
+
 namespace server_side.Controllers
 {
     public class BooksController : Controller
@@ -54,9 +56,6 @@ namespace server_side.Controllers
             ViewBag.serverError = "No connection to database";
             return View("books", _bookList.ToPagedList(page ?? 1, 15));
         }
-            
-        
-
         public ActionResult bookDetails(string isbn)
         {
                 viewModel _viewModel = new viewModel();
@@ -72,10 +71,33 @@ namespace server_side.Controllers
             return View("books", _viewModel);
 
         }
-        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
-        public ActionResult showCreateBook()
+        private bool checkInput(Books book)
         {
+            if (book.Title == null || book.ISBN == null || book.SignId == 0 || book.PublicationYear == null || book.PublicationInfo == null || book.pages == 0 || book.pages < 0)
+            {
+                return false;
+            }
 
+            string number = @"([0-9])+";
+            string text = @"([A-Za-zÅÄÖåäö0-9\.,!: ])+";
+
+            Match tResult = Regex.Match(book.Title, text);
+            Match iResult = Regex.Match(book.ISBN, number);
+            Match sResult = Regex.Match(book.SignId.ToString(), number);
+            Match yResult = Regex.Match(book.PublicationYear, number);
+            Match pResult = Regex.Match(book.pages.ToString(), number);
+            Match inResult = Regex.Match(book.PublicationInfo, text);
+
+            if (tResult.Success && iResult.Success && sResult.Success && yResult.Success && pResult.Success && inResult.Success && (book.ISBN.Length > 6 && book.ISBN.Length < 16))
+            {
+                return true;
+            }
+            return false;
+        }
+        [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
+        [HttpGet]
+        public ActionResult createBook()
+        {
             viewModel _viewModel = new viewModel();
             if (Account.testConn())
             {
@@ -87,39 +109,54 @@ namespace server_side.Controllers
             return View("createBook", _viewModel);
         }
         [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
-        public ActionResult createBook(string title, List<int> aID, string publicationYear, int signId, string isbn, int pages, string publicationInfo)
+        [HttpPost]
+        public ActionResult createBook(string title, List<int> aID, string publicationYear, int? signId, string isbn, int? pages, string publicationInfo)
         {
             List<Author> authorList = new List<Author>();
+            Books _bookObj = new Books();
             if (Account.testConn())
             {
-                Books _bookObj = new Books();
                 _bookObj.Title = title;
                 _bookObj.PublicationYear = publicationYear;
-                _bookObj.SignId = signId;
-                _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+                _bookObj.SignId = signId ?? default(int);
+                _bookObj.CLASSIFICATION = Classification.getClassification(signId ?? default(int));
                 _bookObj.ISBN = isbn;
-                _bookObj.pages = pages;
+                _bookObj.pages = pages ?? default(int);
                 _bookObj.PublicationInfo = publicationInfo;
 
-               
+              
                 foreach (int id in aID)
                 {
                     authorList.Add(Author.getAuthor(id));
                 }
                 _bookObj.AUTHORs = authorList;
-
+                   
+                
+            }
+            if (checkInput(_bookObj))
+            {
                 if (ModelState.IsValid)
                 {
                     Books.addBook(_bookObj);
+                    return View("books", Books.getBookList().ToPagedList(1, 15));
                 }
-                return View("books", Books.getBookList().ToPagedList(1, 15));
+
+            }else
+            {
+                viewModel vmodel = new viewModel();
+                vmodel.book = _bookObj;
+                vmodel.authorList = Author.getAuthorList();
+                vmodel.classificationList = Classification.getClassificationList();
+                ViewBag.ErrorDan = "Input incorrect";
+                return View("createBook", vmodel);
             }
-            
+              
             ViewBag.serverError = "No connection to database";
             return View("books", authorList.ToPagedList(1, 15));
         }
         [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
-        public ActionResult showEditView(string isbn)
+        [HttpGet]
+        public ActionResult editBook(string isbn)
         {
             viewModel _viewModel = new viewModel();
             if (Account.testConn())
@@ -134,14 +171,14 @@ namespace server_side.Controllers
             return View("books", _viewModel);
         }
         [CustomAuthorizeAttribut(Roles = "megaAdmin, admin")]
-        public ActionResult editBook(string title, List<int> aID, string publicationYear, string publicationInfo, int signId, int pages, string ISBN)
+        [HttpPost]
+        public ActionResult editBook(string title, List<int> aID, string publicationYear, string publicationInfo, int? signId, int? pages, string ISBN)
         {
             List<Author> authorList = new List<Author>();
-            if(Account.testConn()) {
-                Books _bookObj = new Books();
+            Books _bookObj = new Books();
+            if (Account.testConn()) {
                 _bookObj.ISBN = ISBN;
                 _bookObj.Title = title;
-                ;
                 foreach (int id in aID.ToList())
                 {
                     authorList.Add(Author.getAuthor(id));
@@ -149,16 +186,30 @@ namespace server_side.Controllers
                 _bookObj.AUTHORs = authorList;
                 _bookObj.PublicationYear = publicationYear;
                 _bookObj.PublicationInfo = publicationInfo;
-                _bookObj.SignId = signId;
-                _bookObj.pages = pages;
-                _bookObj.CLASSIFICATION = Classification.getClassification(signId);
+                _bookObj.SignId = signId ?? default(int);
+                _bookObj.pages = pages ?? default(int);
+                _bookObj.CLASSIFICATION = Classification.getClassification(signId ?? default(int));
+
+            }
+            ////////// 
+            if (checkInput(_bookObj))
+            {
                 if (ModelState.IsValid)
                 {
                     Books.editBook(_bookObj);
+                    return View("books", Books.getBookList().ToPagedList(1, 15));
                 }
-
-                return View("books", Books.getBookList().ToPagedList(1, 13));
             }
+            else
+            {
+                viewModel vmodel = new viewModel();
+                vmodel.book = _bookObj;
+                vmodel.authorList = Author.getAuthorList();
+                vmodel.classificationList = Classification.getClassificationList();
+                ViewBag.ErrorDan = "Input incorrect";
+                return View("editBook", vmodel);
+            }
+
             ViewBag.serverError = "No connection to database";
             return View("books", authorList);
         }
